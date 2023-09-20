@@ -1,14 +1,22 @@
-import React, { FC, ReactElement, useState } from 'react';
+import React, { FC, ReactElement } from 'react';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
-import { Icon } from '@mui/material';
+import { IDateField } from './interfaces/IDateField';
+import PropTypes from 'prop-types';
 
+import { Icon } from '@mui/material';
 import DateRangeIcon from '@mui/icons-material/DateRange';
 
-export const ActivityDateField: FC = (): ReactElement => {
-  // Component state
-  const [date, setDate] = useState<Date | null>(null);
+export const ActivityDateField: FC<IDateField> = (
+  props,
+): ReactElement => {
+  // Destructure props
+  const {
+    disabled = false,
+    value = null,
+    onChange = (date) => console.log(date),
+  } = props;
 
   return (
     <>
@@ -16,8 +24,9 @@ export const ActivityDateField: FC = (): ReactElement => {
         <DesktopDatePicker
           label="Date"
           format="dd/MM/yyyy"
-          value={date}
-          onChange={(newValue) => setDate(newValue)}
+          value={value}
+          onChange={onChange}
+          disabled={disabled}
           slots={{
             openPickerIcon: Icon,
           }}
@@ -33,16 +42,23 @@ export const ActivityDateField: FC = (): ReactElement => {
               zIndex: '1',
               opacity: '0.65',
             },
+            width: '50%',
             zIndex: '1',
           }}
         />
         <DateRangeIcon
           sx={{
-            transform: 'translate(11rem, -3.5rem)',
+            transform: 'translate(-2.5rem, 0.9rem)',
             zIndex: '2',
           }}
         />
       </LocalizationProvider>
     </>
   );
+};
+
+ActivityDateField.propTypes = {
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
+  value: PropTypes.instanceOf(Date),
 };

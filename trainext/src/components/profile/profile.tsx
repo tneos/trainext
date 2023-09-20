@@ -34,10 +34,10 @@ export const Profile: FC<IProfile> = (
         },
 
         position: 'relative',
-        width: '50%',
+        width: '80%',
         height: '25vh',
-        top: '10%',
-        left: '20%',
+        top: '5%',
+        left: '10%',
       }}
     >
       <FaceTwoToneIcon
