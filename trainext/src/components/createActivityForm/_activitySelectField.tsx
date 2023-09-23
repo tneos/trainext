@@ -39,6 +39,7 @@ export const ActivitySelectField: FC<ISelectField> = (
         },
         position: 'relative',
         width: '50%',
+        height: '2.8rem',
         zIndex: '2',
       }}
     >
@@ -78,6 +79,7 @@ export const ActivitySelectField: FC<ISelectField> = (
   );
 };
 
+// items will be array of objects (defined shape of objects)
 ActivitySelectField.propTypes = {
   onChange: PropTypes.func,
   label: PropTypes.string,

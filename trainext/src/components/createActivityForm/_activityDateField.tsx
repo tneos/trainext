@@ -43,12 +43,14 @@ export const ActivityDateField: FC<IDateField> = (
               opacity: '0.65',
             },
             width: '50%',
+            height: '2.8rem',
+
             zIndex: '1',
           }}
         />
         <DateRangeIcon
           sx={{
-            transform: 'translate(-2.5rem, 0.9rem)',
+            transform: 'translate(-2.5rem, 0.6rem)',
             zIndex: '2',
           }}
         />

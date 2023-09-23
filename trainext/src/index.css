@@ -27,6 +27,11 @@ code {
   height: 100%;
 }
 
+/* Customize date component */
+.MuiFormLabel-root {
+  transform: 'translate(12px, 12px) scale(1)';
+}
+
 .MuiInputLabel-root[data-shrink='true'] {
   transform: translate(14px, -20px) scale(0.75) !important;
 }

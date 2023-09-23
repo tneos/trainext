@@ -23,18 +23,14 @@ export const ActivityTimeField: FC = (): ReactElement => {
             opacity: '0.65',
           },
           width: '50%',
-          height: '100%',
-          //position: 'relative',
+          height: '2.8rem',
           margin: '0',
           zIndex: '1',
         }}
       />
       <AccessTimeIcon
         sx={{
-          // position: 'absolute',
-          // top: '0',
-          // left: '0',
-          transform: 'translate(-2.5rem, 0.9rem)',
+          transform: 'translate(-2.5rem, 0.6rem)',
           zIndex: '3',
         }}
       />
