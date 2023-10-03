@@ -1,7 +1,8 @@
 import React, { FC, ReactElement } from 'react';
 
-import { Grid, Box } from '@mui/material';
+import { Grid } from '@mui/material';
 import { ActivityCounter } from '../activityCounter/activityCounter';
+import { ActivityComp } from '../activity/activityComp';
 
 export const ActivityArea: FC = (): ReactElement => {
   return (
@@ -9,7 +10,11 @@ export const ActivityArea: FC = (): ReactElement => {
       item
       md={7}
       px={4}
-      sx={{ backgroundColor: '#E2E2E2' }}
+      sx={{
+        backgroundColor: '#E2E2E2',
+        overflowY: 'scroll',
+        maxHeight: '100vh',
+      }}
     >
       <Grid
         container
@@ -24,8 +29,8 @@ export const ActivityArea: FC = (): ReactElement => {
           alignItems="center"
           md={12}
           xs={12}
-          mb={8}
-          mt={8}
+          mb={4}
+          mt={4}
         >
           <ActivityCounter />
           <ActivityCounter />
@@ -38,7 +43,10 @@ export const ActivityArea: FC = (): ReactElement => {
           xs={10}
           md={8}
         >
-          <Box>Activities Display Area</Box>
+          <ActivityComp />
+          <ActivityComp />
+          <ActivityComp />
+          <ActivityComp />
         </Grid>
       </Grid>
     </Grid>
