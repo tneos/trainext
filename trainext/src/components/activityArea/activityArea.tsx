@@ -1,8 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 
 import { Grid } from '@mui/material';
+import { Logo } from '../logo/logo';
 import { ActivityCounter } from '../activityCounter/activityCounter';
 import { ActivityComp } from '../activity/activityComp';
+import { ActivitiesTotal } from '../activitiesTotal/activitiesTotal';
+import { ActivitiesTotalTime } from '../activitiesTotalTime/activitiesTotalTime';
+import { ActivitiesTotalDistance } from '../activitiesTotalDistance/activitiesTotalDistance';
 
 export const ActivityArea: FC = (): ReactElement => {
   return (
@@ -16,6 +20,7 @@ export const ActivityArea: FC = (): ReactElement => {
         maxHeight: '100vh',
       }}
     >
+      <Logo />
       <Grid
         container
         display="flex"
@@ -47,6 +52,21 @@ export const ActivityArea: FC = (): ReactElement => {
           <ActivityComp />
           <ActivityComp />
           <ActivityComp />
+        </Grid>
+        <Grid
+          item
+          display="flex"
+          flexDirection="row"
+          justifyContent="space-around"
+          alignItems="center"
+          md={12}
+          xs={12}
+          mb={4}
+          mt={4}
+        >
+          <ActivitiesTotal />
+          <ActivitiesTotalTime />
+          <ActivitiesTotalDistance />
         </Grid>
       </Grid>
     </Grid>
