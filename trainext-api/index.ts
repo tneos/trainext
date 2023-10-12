@@ -1,14 +1,11 @@
-import express, {
-  Express,
-  Request,
-  Response,
-} from 'express';
+import express, { Express } from 'express';
 
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import { DataSource } from 'typeorm';
-import { Activities } from './src/activities/activities.entity';
+import { Session } from './src/activities/activities.entity';
+import { activitiesRouter } from './src/activities/activities.router';
 
 // Instantiate express app
 const app: Express = express();
@@ -28,17 +25,12 @@ export const AppDataSource = new DataSource({
   username: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
   database: process.env.MYSQL_DB,
-  entities: [Activities],
+  entities: [Session],
   synchronize: true,
 });
 
 // Define server port
 const port = process.env.PORT;
-
-// Create a default route
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express and Typescript server route created');
-});
 
 // Initialize typeORM
 AppDataSource.initialize()
@@ -48,3 +40,6 @@ AppDataSource.initialize()
     console.log('Data source has been initialized..');
   })
   .catch((err) => console.log(err));
+
+// Routes
+app.use('/', activitiesRouter);

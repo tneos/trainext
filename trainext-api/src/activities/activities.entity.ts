@@ -7,7 +7,7 @@ import { Activity } from '../enums/Activity';
 import { Status } from '../enums/Status';
 
 @Entity()
-export class Activities {
+export class Session {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
