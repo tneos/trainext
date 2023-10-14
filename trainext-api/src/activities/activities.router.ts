@@ -6,8 +6,16 @@ export const activitiesRouter: Router = Router();
 // Create a default route
 activitiesRouter.get(
   '/activities',
-  (req: Request, res: Response) => {
+  async (req: Request, res: Response) => {
     const activitiesController = new ActivitiesController();
-    activitiesController.getAll();
+    const allActivities =
+      await activitiesController.getAll();
+    res.json(allActivities).status(200);
   },
+);
+
+// Post session endpoint
+activitiesRouter.post(
+  '/activities',
+  async (req: Request, res: Response) => {},
 );

@@ -9,6 +9,7 @@ export class ActivitiesController {
     ),
   ) {}
 
+  // GET ALL ACTIVITIES METHOD
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   //@ts-ignore
   public async getAll(): Promise<Session[]> {
