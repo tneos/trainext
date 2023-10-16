@@ -1,9 +1,9 @@
-import { body } from 'express-validator';
+import { body, ValidationChain } from 'express-validator';
 import { Activity } from '../enums/Activity';
 import { Status } from '../enums/Status';
 
-export const createValidator = [
-  body('activities')
+export const createValidator: ValidationChain[] = [
+  body('activity')
     .trim()
     .isIn([
       Activity.running,
@@ -48,5 +48,25 @@ export const createValidator = [
     .isString()
     .withMessage(
       'The duration needs to be a valid date format',
+    ),
+];
+
+export const updateValidator = [
+  body('id')
+    .not()
+    .isEmpty()
+    .withMessage('The activity id is mandatory')
+    .trim()
+    .isString()
+    .withMessage('ID needs to be a valid uuid format'),
+  body('status')
+    .trim()
+    .isIn([
+      Status.completed,
+      Status.planned,
+      Status.started,
+    ])
+    .withMessage(
+      'Status can only be started, planned or completed',
     ),
 ];
