@@ -1,5 +1,11 @@
 import React, { FC, ReactElement, useState } from 'react';
-import { Box, Typography, Stack } from '@mui/material';
+import {
+  Box,
+  Typography,
+  Stack,
+  Alert,
+  AlertTitle,
+} from '@mui/material';
 
 import { ActivityDateField } from './_activityDateField';
 import { ActivityTimeField } from './_activityTimeField';
@@ -28,7 +34,44 @@ export const CreateActivityForm: FC = (): ReactElement => {
       px={4}
       mt={8}
       mb={6}
+      sx={{ position: 'relative' }}
     >
+      <Alert
+        severity="success"
+        sx={{
+          position: 'absolute',
+          top: '100%',
+          left: '20%',
+          width: '60%',
+          height: '9vh',
+          fontSize: '0.6rem',
+        }}
+      >
+        <Box sx={{ display: 'flex' }}>
+          <AlertTitle
+            sx={{
+              fontSize: '0.8rem',
+              width: '33%',
+              marginBottom: '0',
+              height: '2rem',
+              lineHeight: '2.2rem',
+            }}
+          >
+            Success
+          </AlertTitle>
+          <Typography
+            variant="h6"
+            sx={{
+              width: '60%',
+              fontSize: '0.65rem',
+              lineHeight: '2rem',
+              height: '2rem',
+            }}
+          >
+            Activity added to your log
+          </Typography>
+        </Box>
+      </Alert>
       <Typography
         mb={2}
         component="h2"

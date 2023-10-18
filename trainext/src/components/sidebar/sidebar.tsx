@@ -1,6 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 
-import { Grid, Box } from '@mui/material';
+import { Grid, Box, LinearProgress } from '@mui/material';
 import Image from '../../images/background.jpg';
 
 import { Profile } from '../profile/profile';
@@ -33,10 +33,17 @@ export const Sidebar: FC = (): ReactElement => {
     >
       <Profile />
       <CreateActivityForm />
+      <LinearProgress
+        sx={{
+          width: '50%',
+          marginBottom: '0.5rem',
+          marginX: '25%',
+        }}
+      />
       <Box
         sx={{
           position: 'absolute',
-          right: '12%',
+          right: '10.8%',
         }}
       >
         <ActivityButton />
