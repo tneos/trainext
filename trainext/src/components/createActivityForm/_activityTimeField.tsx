@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -6,10 +6,14 @@ import { TimeField } from '@mui/x-date-pickers';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 
 export const ActivityTimeField: FC = (): ReactElement => {
+  const [time, setTime] = useState<string | null>(null);
+
   return (
     <LocalizationProvider dateAdapter={AdapterDateFns}>
       <TimeField
         ampm={false}
+        value={time}
+        onChange={(newValue) => setTime(newValue)}
         sx={{
           '&::before': {
             content: '""',

@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useState } from 'react';
 import { Box, Typography, Stack } from '@mui/material';
 
 import { ActivityDateField } from './_activityDateField';
@@ -9,6 +9,16 @@ import { Status } from './enums/Status';
 import { Activity } from './enums/Activity';
 
 export const CreateActivityForm: FC = (): ReactElement => {
+  // Component inputs state
+  const [activity, setActivity] = useState<string>(
+    Activity.running,
+  );
+  const [date, setDate] = useState<Date | null>(new Date());
+
+  const [status, setStatus] = useState<string>(
+    Status.planned,
+  );
+
   return (
     <Box
       display="flex"
@@ -40,6 +50,10 @@ export const CreateActivityForm: FC = (): ReactElement => {
         <ActivitySelectField
           label="Activity"
           name="activity"
+          value={activity}
+          onChange={(e) =>
+            setActivity(e.target.value as string)
+          }
           items={[
             {
               value: Activity.walking,
@@ -82,7 +96,10 @@ export const CreateActivityForm: FC = (): ReactElement => {
         mt={8}
         spacing={2}
       >
-        <ActivityDateField />
+        <ActivityDateField
+          value={date}
+          onChange={(date) => setDate(date)}
+        />
         <ActivityTimeField />
       </Stack>
       <Stack
@@ -96,6 +113,10 @@ export const CreateActivityForm: FC = (): ReactElement => {
         <ActivitySelectField
           label="Status"
           name="status"
+          value={status}
+          onChange={(e) =>
+            setStatus(e.target.value as string)
+          }
           items={[
             {
               value: Status.planned,
