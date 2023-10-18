@@ -32,7 +32,7 @@ class ActivitiesController {
         allActivities,
       ) as Session[];
 
-      // console.log(allActivities);
+      console.log(allActivities);
 
       return res.json(allActivities).status(200);
     } catch (_errors) {
