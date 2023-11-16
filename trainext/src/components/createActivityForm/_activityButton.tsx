@@ -20,16 +20,6 @@ export const ActivityButton: FC = (): any => {
 
   const formContext = useContext(FormContext);
   const { dispatch } = formContext;
-
-  const [newActivity, setNewActivity] =
-    useState<ICreateActivity>({
-      activity: '',
-      date: '',
-      time: '',
-      status: '',
-      duration: '',
-    });
-
   const {
     activity,
     date,
@@ -39,8 +29,15 @@ export const ActivityButton: FC = (): any => {
     updated,
     isSuccess,
   } = formContext.state;
-  //console.log(formContext, newActivity);
-  console.log(isSuccess);
+
+  const [newActivity, setNewActivity] =
+    useState<ICreateActivity>({
+      activity: activity,
+      date: date,
+      time: time,
+      status: status,
+      duration: duration,
+    });
 
   const createActivityMutation = useMutation(
     (data: ICreateActivity) =>
@@ -59,15 +56,25 @@ export const ActivityButton: FC = (): any => {
       status: status.toString(),
       duration: duration && duration.toString(),
     });
-  }, [formContext.state]);
 
-  console.log(newActivity);
+    dispatch({
+      type: Types.IsLoading,
+      payload: createActivityMutation.isLoading,
+    });
+  }, [
+    activity,
+    time,
+    duration,
+    status,
+    date,
+    createActivityMutation.isLoading,
+  ]);
 
+  // Submit data
   const activityHandler = () => {
     if (!newActivity.duration) {
       return;
     }
-    console.log('handler runs');
 
     createActivityMutation.mutate(newActivity);
 
@@ -77,14 +84,7 @@ export const ActivityButton: FC = (): any => {
     });
   };
 
-  if (createActivityMutation.isLoading) {
-    dispatch({
-      type: Types.IsLoading,
-      payload: true,
-    });
-  }
-
-  // If successful submission of session set value back to false after 7 sec
+  // // If successful submission of session set value back to false after 7 sec
   if (isSuccess) {
     setTimeout(() => {
       dispatch({

@@ -104,7 +104,7 @@ export const activityReducer = (
     case Types.IsLoading:
       return {
         ...state,
-        updated: action.payload,
+        isLoading: action.payload,
       };
     case Types.Success:
       return {

@@ -36,7 +36,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
 
   const [formData, setFormData] = useState(state);
   const [success, setSuccess] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(state.isLoading);
 
   useEffect(() => {
     if (formContext.state.isSuccess) {

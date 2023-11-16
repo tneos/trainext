@@ -1,7 +1,7 @@
 export interface ICreateActivity {
   activity: string;
-  date: string | null;
-  time: string | null;
+  date: Date | string | null;
+  time: string | Date | null;
   status: string;
   duration: string | null;
 }

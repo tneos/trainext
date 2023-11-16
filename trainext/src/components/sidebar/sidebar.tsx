@@ -37,12 +37,15 @@ export const Sidebar: FC = (): ReactElement => {
     >
       <Profile />
       <CreateActivityForm />
+
       {isLoading && (
         <LinearProgress
           sx={{
-            width: '50%',
+            width: '22%',
             marginBottom: '0.5rem',
-            marginX: '25%',
+            marginLeft: '10%',
+            position: 'absolute',
+            bottom: '1%',
           }}
         />
       )}
