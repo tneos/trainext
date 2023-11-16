@@ -1,8 +1,8 @@
-type Method = 'GET' | 'POST' | 'PUT' | 'DELETE';
+type Requests = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 // Conditional options object based on method type
 function relevantRequest(
-  method: Method,
+  method: Requests,
   data: unknown,
 ): RequestInit {
   if (method === 'GET') {
@@ -25,7 +25,7 @@ function relevantRequest(
 
 export async function sendApiRequest<T>(
   url: string,
-  method: Method,
+  method: Requests,
   data: unknown = {},
 ): Promise<T> {
   const response = await fetch(
@@ -33,10 +33,11 @@ export async function sendApiRequest<T>(
     relevantRequest(method, data),
   );
 
+  console.log(response);
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     throw new Error(message);
   }
 
-  return response.json() as Promise<T>;
+  return (await response.json()) as Promise<T>;
 }

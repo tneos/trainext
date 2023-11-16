@@ -1,4 +1,4 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useContext } from 'react';
 
 import { Grid, Box, LinearProgress } from '@mui/material';
 import Image from '../../images/background.jpg';
@@ -6,8 +6,12 @@ import Image from '../../images/background.jpg';
 import { Profile } from '../profile/profile';
 import { CreateActivityForm } from '../createActivityForm/createActivityForm';
 import { ActivityButton } from '../createActivityForm/_activityButton';
+import { FormContext } from '../../context';
 
 export const Sidebar: FC = (): ReactElement => {
+  const formContext = useContext(FormContext);
+  const { isLoading } = formContext.state;
+
   return (
     <Grid
       item
@@ -33,13 +37,16 @@ export const Sidebar: FC = (): ReactElement => {
     >
       <Profile />
       <CreateActivityForm />
-      <LinearProgress
-        sx={{
-          width: '50%',
-          marginBottom: '0.5rem',
-          marginX: '25%',
-        }}
-      />
+      {isLoading && (
+        <LinearProgress
+          sx={{
+            width: '50%',
+            marginBottom: '0.5rem',
+            marginX: '25%',
+          }}
+        />
+      )}
+
       <Box
         sx={{
           position: 'absolute',

@@ -19,7 +19,7 @@ export const ActivitySelectField: FC<ISelectField> = (
     name = 'selectBox',
     items = [{ value: '', label: 'Add Items' }],
     disabled = false,
-    onChange = (e) => console.log(e),
+    onChange = (e: SelectChangeEvent) => console.log(e),
   } = props;
   return (
     <FormControl

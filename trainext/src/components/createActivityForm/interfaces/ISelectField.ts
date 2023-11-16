@@ -11,6 +11,6 @@ export interface ISelectField extends IDisabled {
   name?: string;
   label?: string;
   value?: string;
-  onChange?: (e: SelectChangeEvent) => void;
+  onChange?: (e: SelectChangeEvent) => any;
   items?: ISelectItems[];
 }

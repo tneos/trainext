@@ -11,11 +11,9 @@ import DateRangeIcon from '@mui/icons-material/DateRange';
 export const ActivityDateField: FC<IDateField> = (
   props,
 ): ReactElement => {
-  // Destructure props
   const {
-    disabled = false,
-    value = null,
-    onChange = (date) => console.log(date),
+    value = new Date(),
+    onChange = (date: Date | null) => console.log(date),
   } = props;
 
   return (
@@ -26,7 +24,6 @@ export const ActivityDateField: FC<IDateField> = (
           format="dd/MM/yyyy"
           value={value}
           onChange={onChange}
-          disabled={disabled}
           slots={{
             openPickerIcon: Icon,
           }}

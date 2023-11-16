@@ -19,7 +19,6 @@ export const ActivityComp: FC<IActivityComp> = (
     date = new Date(),
     onStatusChange = (e) => console.log(e),
     onClick = (e) => console.log(e),
-    id,
     status = Status.completed,
   } = props;
   return (

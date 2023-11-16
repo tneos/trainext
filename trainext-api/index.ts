@@ -20,7 +20,7 @@ app.use(cors());
 // Create Database connection -- TODO conditionally set synchronize property(true for development mode)
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: 'localhost',
+  host: '127.0.0.1',
   port: 3306,
   username: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASSWORD,
@@ -37,7 +37,7 @@ AppDataSource.initialize()
   .then(() => {
     // Start listening to requests on the defined port
     app.listen(port);
-    console.log('Data source has been initialized..');
+    console.log('Data source has been initialized');
   })
   .catch((err) => console.log(err));
 

@@ -1,34 +1,26 @@
-import React, { FC, ReactElement, useContext } from 'react';
+import React, { FC, ReactElement } from 'react';
 
-import { LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { TimeField } from '@mui/x-date-pickers';
+import { TextField } from '@mui/material';
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 // Interface
-import { ITimeField } from './interfaces/ITimeField';
-// Context
-import { FormContext } from '../../context';
+import { IDurationField } from './interfaces/IDurationField';
 
-export const ActivityTimeField: FC<ITimeField> = (
+export const ActivityDurationField: FC<IDurationField> = (
   props,
 ): ReactElement => {
-  const formContext = useContext(FormContext);
-  const { state } = formContext;
-
   // Destructure props
   const {
     disabled = false,
-    onChange = (time: Date | string | null) =>
-      console.log(time),
+    onChange = (duration) => console.log(duration),
   } = props;
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDateFns}>
-      <TimeField
-        id="time"
-        name="time"
-        value={state.date}
+    <>
+      <TextField
+        id="duration"
+        name="duration"
+        placeholder="hh:mm"
         disabled={disabled}
         onChange={onChange}
         sx={{
@@ -55,6 +47,6 @@ export const ActivityTimeField: FC<ITimeField> = (
           zIndex: '3',
         }}
       />
-    </LocalizationProvider>
+    </>
   );
 };
