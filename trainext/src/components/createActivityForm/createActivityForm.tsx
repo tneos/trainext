@@ -36,6 +36,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
 
   const [formData, setFormData] = useState(state);
   const [success, setSuccess] = useState(false);
+  const [invalid, setInvalid] = useState(false);
   const [loading, setLoading] = useState(state.isLoading);
 
   useEffect(() => {
@@ -50,9 +51,15 @@ export const CreateActivityForm: FC = (): ReactElement => {
     } else {
       setLoading(false);
     }
+    if (formContext.state.notValid) {
+      setInvalid(true);
+    } else {
+      setInvalid(false);
+    }
   }, [
     formContext.state.isSuccess,
     formContext.state.isLoading,
+    formContext.state.notValid,
   ]);
 
   const onChangeInput = (e: SelectChangeEvent) => {
@@ -101,19 +108,27 @@ export const CreateActivityForm: FC = (): ReactElement => {
       HTMLInputElement | HTMLTextAreaElement
     >,
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    e.target.value.substring(
+      e.target.value.length - 3,
+      e.target.value.length,
+    ) === 'min' &&
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.value,
+      });
 
     dispatch({
       type: Types.AddDuration,
       payload: e.target.value,
     });
-    dispatch({
-      type: Types.Update,
-      payload: true,
-    });
+    e.target.value.substring(
+      e.target.value.length - 3,
+      e.target.value.length,
+    ) === 'min' &&
+      dispatch({
+        type: Types.Update,
+        payload: true,
+      });
   };
 
   return (
@@ -127,6 +142,44 @@ export const CreateActivityForm: FC = (): ReactElement => {
       mb={6}
       sx={{ position: 'relative' }}
     >
+      {invalid && (
+        <Alert
+          severity="error"
+          sx={{
+            position: 'absolute',
+            top: '100%',
+            left: '20%',
+            width: '60%',
+            height: '9vh',
+            fontSize: '0.6rem',
+          }}
+        >
+          <Box sx={{ display: 'flex' }}>
+            <AlertTitle
+              sx={{
+                fontSize: '0.8rem',
+                width: '33%',
+                marginBottom: '0',
+                height: '2rem',
+                lineHeight: '2.2rem',
+              }}
+            >
+              Error
+            </AlertTitle>
+            <Typography
+              variant="h6"
+              sx={{
+                width: '60%',
+                fontSize: '0.65rem',
+                lineHeight: '2rem',
+                height: '2rem',
+              }}
+            >
+              Please add duration in the right format
+            </Typography>
+          </Box>
+        </Alert>
+      )}
       {success && (
         <Alert
           severity="success"

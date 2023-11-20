@@ -34,6 +34,7 @@ type InitialStateType = {
   status: StatusType;
   duration: string | null;
   updated: boolean;
+  notValid: boolean;
   isLoading: boolean;
   isSuccess: boolean;
 };
@@ -46,6 +47,7 @@ const initialState = {
   duration: 'hh:mm',
   updated: false,
   isLoading: false,
+  notValid: false,
   isSuccess: false,
 };
 

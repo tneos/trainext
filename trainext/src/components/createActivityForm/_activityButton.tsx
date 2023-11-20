@@ -27,6 +27,7 @@ export const ActivityButton: FC = (): any => {
     status,
     duration,
     updated,
+    notValid,
     isSuccess,
   } = formContext.state;
 
@@ -72,10 +73,20 @@ export const ActivityButton: FC = (): any => {
 
   // Submit data
   const activityHandler = () => {
-    if (!newActivity.duration) {
+    if (
+      !newActivity.duration ||
+      newActivity.duration.substring(
+        newActivity.duration.length - 3,
+        newActivity.duration.length,
+      ) !== 'min'
+    ) {
+      dispatch({
+        type: Types.NotValid,
+        payload: true,
+      });
       return;
     }
-
+    console.log(newActivity.duration);
     createActivityMutation.mutate(newActivity);
 
     dispatch({
@@ -89,6 +100,13 @@ export const ActivityButton: FC = (): any => {
     setTimeout(() => {
       dispatch({
         type: Types.Success,
+        payload: false,
+      });
+    }, 7000);
+  } else if (notValid) {
+    setTimeout(() => {
+      dispatch({
+        type: Types.NotValid,
         payload: false,
       });
     }, 7000);

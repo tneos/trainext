@@ -31,8 +31,7 @@ export const ActivityInfo: FC<IActivityInfo> = (
             ml={0.5}
             sx={{ verticalAlign: 'middle' }}
           >
-            {duration}
-            {title}
+            {duration} {title}
           </Typography>
         </Box>
         <Box>

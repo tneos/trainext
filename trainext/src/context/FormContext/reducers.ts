@@ -10,6 +10,7 @@ export enum Types {
   Update = 'UPDATE',
   IsLoading = 'IS_LOADING',
   Success = 'SUCCESS',
+  NotValid = 'NOT_VALID',
 }
 
 type StatusType =
@@ -48,6 +49,10 @@ export type ActivityActionType =
       payload: boolean;
     }
   | {
+      type: Types.NotValid;
+      payload: boolean;
+    }
+  | {
       type: Types.Success;
       payload: boolean;
     };
@@ -60,6 +65,7 @@ type ActivityFormType = {
   duration: Date | string | null;
   update: boolean;
   isLoading: boolean;
+  notValid: boolean;
   success: boolean;
 };
 
@@ -105,6 +111,11 @@ export const activityReducer = (
       return {
         ...state,
         isLoading: action.payload,
+      };
+    case Types.NotValid:
+      return {
+        ...state,
+        notValid: action.payload,
       };
     case Types.Success:
       return {

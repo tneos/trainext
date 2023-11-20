@@ -20,7 +20,7 @@ export const ActivityDurationField: FC<IDurationField> = (
       <TextField
         id="duration"
         name="duration"
-        placeholder="hh:mm"
+        placeholder="Add min"
         disabled={disabled}
         onChange={onChange}
         sx={{
