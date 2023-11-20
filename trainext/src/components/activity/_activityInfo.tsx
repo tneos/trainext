@@ -5,14 +5,13 @@ import { IActivityInfo } from './interfaces/IActivityInfo';
 
 import { format } from 'date-fns';
 import PropTypes from 'prop-types';
-import { Activity } from '../createActivityForm/enums/Activity';
 
 export const ActivityInfo: FC<IActivityInfo> = (
   props,
 ): ReactElement => {
   // Destructure props
   const {
-    title = Activity.cycling,
+    title = 'Walking',
     duration = '25min ',
     date = new Date(),
   } = props;
@@ -51,13 +50,7 @@ export const ActivityInfo: FC<IActivityInfo> = (
 };
 
 ActivityInfo.propTypes = {
-  title: PropTypes.oneOf([
-    Activity.cycling,
-    Activity.rowing,
-    Activity.running,
-    Activity.swimming,
-    Activity.walking,
-  ]),
+  title: PropTypes.string,
   duration: PropTypes.string,
   date: PropTypes.instanceOf(Date),
 };

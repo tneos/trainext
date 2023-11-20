@@ -1,14 +1,34 @@
 import React, { FC, ReactElement } from 'react';
 
-import { Grid } from '@mui/material';
+import { Grid, Alert, LinearProgress } from '@mui/material';
 import { Logo } from '../logo/logo';
 import { ActivityCounter } from '../activityCounter/activityCounter';
 import { ActivityComp } from '../activity/activityComp';
 import { ActivitiesTotal } from '../activitiesTotal/activitiesTotal';
 import { ActivitiesTotalTime } from '../activitiesTotalTime/activitiesTotalTime';
 import { ActivitiesTotalDistance } from '../activitiesTotalDistance/activitiesTotalDistance';
+// Interface
+import { IAcitivityApi } from './interfaces/IActivityApi';
+
+// Query imports
+import { useQuery } from '@tanstack/react-query';
+import { sendApiRequest } from '../../helpers/sendApiRequest';
 
 export const ActivityArea: FC = (): ReactElement => {
+  const { error, isLoading, data, refetch } = useQuery(
+    ['activities'],
+    async () => {
+      return await sendApiRequest<IAcitivityApi[]>(
+        'http://localhost:3200/activities',
+        'GET',
+      );
+    },
+  );
+
+  data &&
+    data.length > 0 &&
+    data.map((obj) => console.log(obj.date));
+
   return (
     <Grid
       item
@@ -37,6 +57,22 @@ export const ActivityArea: FC = (): ReactElement => {
           mb={4}
           mt={4}
         >
+          <>
+            {error && (
+              <Alert severity="error">
+                There was an error fetching your activities
+              </Alert>
+            )}
+            {!error &&
+              Array.isArray(data) &&
+              data.length === 0 && (
+                <Alert severity="warning">
+                  You don&apos;t have any activities created
+                  yet. Start by adding one.
+                </Alert>
+              )}
+          </>
+
           <ActivityCounter />
           <ActivityCounter />
           <ActivityCounter />
@@ -48,10 +84,23 @@ export const ActivityArea: FC = (): ReactElement => {
           xs={10}
           md={8}
         >
-          <ActivityComp />
-          <ActivityComp />
-          <ActivityComp />
-          <ActivityComp />
+          {isLoading ? (
+            <LinearProgress />
+          ) : (
+            Array.isArray(data) &&
+            data.length > 0 &&
+            data.map((obj, index) => {
+              return (
+                <ActivityComp
+                  key={index + obj.status}
+                  title={obj.activity}
+                  date={new Date(obj.date)}
+                  status={obj.status}
+                  id={obj.id}
+                />
+              );
+            })
+          )}
         </Grid>
         <Grid
           item

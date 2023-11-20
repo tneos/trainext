@@ -14,12 +14,13 @@ export const ActivityComp: FC<IActivityComp> = (
 ): ReactElement => {
   // Destructure props
   const {
-    title = Activity.running,
+    title = 'running',
     duration = '60 min ',
     date = new Date(),
     onStatusChange = (e) => console.log(e),
     onClick = (e) => console.log(e),
     status = Status.completed,
+    id,
   } = props;
   return (
     <Box
@@ -44,23 +45,19 @@ export const ActivityComp: FC<IActivityComp> = (
       <ActivityButtons
         onStatusChange={onStatusChange}
         onClick={onClick}
+        id={id}
+        status={status}
       />
     </Box>
   );
 };
 
 ActivityComp.propTypes = {
-  title: PropTypes.oneOf([
-    Activity.cycling,
-    Activity.rowing,
-    Activity.running,
-    Activity.swimming,
-    Activity.walking,
-  ]),
+  title: PropTypes.string,
   duration: PropTypes.string,
   date: PropTypes.instanceOf(Date),
   onStatusChange: PropTypes.func,
   onClick: PropTypes.func,
-  id: PropTypes.string,
+  id: PropTypes.string.isRequired,
   status: PropTypes.string,
 };
