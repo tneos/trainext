@@ -9,6 +9,7 @@ import {
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { IActivityButtons } from './interfaces/IActivityButtons';
 import PropTypes from 'prop-types';
+import { Status } from '../createActivityForm/enums/Status';
 
 export const ActivityButtons: FC<IActivityButtons> = (
   props,
@@ -29,14 +30,13 @@ export const ActivityButtons: FC<IActivityButtons> = (
     >
       <FormControlLabel
         label={
-          <Typography fontSize="0.7rem">
-            In Progress
-          </Typography>
+          <Typography fontSize="0.7rem">Started</Typography>
         }
         control={
           <Switch
-            onChange={(e) => onStatusChange(e)}
+            onChange={(e) => onStatusChange(e, id)}
             color="warning"
+            defaultChecked={status === Status.started}
           />
         }
       ></FormControlLabel>
@@ -53,7 +53,7 @@ export const ActivityButtons: FC<IActivityButtons> = (
         >
           Mark as completed
         </Typography>
-        <IconButton onClick={(e) => onClick(e)}>
+        <IconButton onClick={(e) => onClick(e, id)}>
           <HighlightOffIcon sx={{ width: '1.2rem' }} />
         </IconButton>
       </Box>

@@ -158,7 +158,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
             <AlertTitle
               sx={{
                 fontSize: '0.8rem',
-                width: '33%',
+                width: '20%',
                 marginBottom: '0',
                 height: '2rem',
                 lineHeight: '2.2rem',
@@ -169,7 +169,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
             <Typography
               variant="h6"
               sx={{
-                width: '60%',
+                width: '80%',
                 fontSize: '0.65rem',
                 lineHeight: '2rem',
                 height: '2rem',

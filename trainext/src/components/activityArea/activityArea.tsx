@@ -7,11 +7,15 @@ import { ActivityComp } from '../activity/activityComp';
 import { ActivitiesTotal } from '../activitiesTotal/activitiesTotal';
 import { ActivitiesTotalTime } from '../activitiesTotalTime/activitiesTotalTime';
 import { ActivitiesTotalDistance } from '../activitiesTotalDistance/activitiesTotalDistance';
-// Interface
+// Interfaces
 import { IAcitivityApi } from './interfaces/IActivityApi';
-
+import { Status } from '../createActivityForm/enums/Status';
+import { IUpdateActivity } from '../createActivityForm/interfaces/IUpdateActivity';
 // Query imports
-import { useQuery } from '@tanstack/react-query';
+import {
+  useQuery,
+  useMutation,
+} from '@tanstack/react-query';
 import { sendApiRequest } from '../../helpers/sendApiRequest';
 
 export const ActivityArea: FC = (): ReactElement => {
@@ -28,6 +32,28 @@ export const ActivityArea: FC = (): ReactElement => {
   data &&
     data.length > 0 &&
     data.map((obj) => console.log(obj.date));
+
+  // Update activity mutation(
+  const updateActivityMutation = useMutation(
+    (data: IUpdateActivity) =>
+      sendApiRequest(
+        'http://localhost:3200/activities',
+        'PUT',
+        data,
+      ),
+  );
+
+  function onStatusChangeHandler(
+    e: React.ChangeEvent<HTMLInputElement>,
+    id: string,
+  ) {
+    updateActivityMutation.mutate({
+      id,
+      status: e.target.checked
+        ? Status.started
+        : Status.planned,
+    });
+  }
 
   return (
     <Grid
@@ -90,7 +116,8 @@ export const ActivityArea: FC = (): ReactElement => {
             Array.isArray(data) &&
             data.length > 0 &&
             data.map((obj, index) => {
-              return (
+              return obj.status === Status.started ||
+                obj.status === Status.planned ? (
                 <ActivityComp
                   key={index + obj.status}
                   duration={obj.duration}
@@ -98,7 +125,10 @@ export const ActivityArea: FC = (): ReactElement => {
                   date={new Date(obj.date)}
                   status={obj.status}
                   id={obj.id}
+                  onStatusChange={onStatusChangeHandler}
                 />
+              ) : (
+                false
               );
             })
           )}
