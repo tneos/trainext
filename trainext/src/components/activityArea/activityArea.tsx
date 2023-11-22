@@ -11,6 +11,8 @@ import { ActivitiesTotalDistance } from '../activitiesTotalDistance/activitiesTo
 import { IAcitivityApi } from './interfaces/IActivityApi';
 import { Status } from '../createActivityForm/enums/Status';
 import { IUpdateActivity } from '../createActivityForm/interfaces/IUpdateActivity';
+// Helper function
+import { countAcitivities } from './helpers/countActivities';
 // Query imports
 import {
   useQuery,
@@ -52,6 +54,18 @@ export const ActivityArea: FC = (): ReactElement => {
       status: e.target.checked
         ? Status.started
         : Status.planned,
+    });
+  }
+
+  function markCompleteHandler(
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.MouseEvent<HTMLAnchorElement>,
+    id: string,
+  ) {
+    updateActivityMutation.mutate({
+      id,
+      status: Status.completed,
     });
   }
 
@@ -99,9 +113,30 @@ export const ActivityArea: FC = (): ReactElement => {
               )}
           </>
 
-          <ActivityCounter />
-          <ActivityCounter />
-          <ActivityCounter />
+          <ActivityCounter
+            count={
+              data
+                ? countAcitivities(data, Status.planned)
+                : undefined
+            }
+            status={Status.planned}
+          />
+          <ActivityCounter
+            count={
+              data
+                ? countAcitivities(data, Status.started)
+                : undefined
+            }
+            status={Status.started}
+          />
+          <ActivityCounter
+            count={
+              data
+                ? countAcitivities(data, Status.completed)
+                : undefined
+            }
+            status={Status.completed}
+          />
         </Grid>
         <Grid
           item
@@ -126,6 +161,7 @@ export const ActivityArea: FC = (): ReactElement => {
                   status={obj.status}
                   id={obj.id}
                   onStatusChange={onStatusChangeHandler}
+                  onClick={markCompleteHandler}
                 />
               ) : (
                 false
