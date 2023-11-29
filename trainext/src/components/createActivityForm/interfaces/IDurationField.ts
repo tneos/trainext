@@ -6,4 +6,5 @@ export interface IDurationField extends IDisabled {
       HTMLInputElement | HTMLTextAreaElement
     >,
   ) => void;
+  onClick?: (e: React.MouseEvent) => void;
 }

@@ -1,4 +1,9 @@
-import React, { FC, ReactElement } from 'react';
+import React, {
+  FC,
+  ReactElement,
+  useContext,
+  useEffect,
+} from 'react';
 
 import { Grid, Alert, LinearProgress } from '@mui/material';
 import { Logo } from '../logo/logo';
@@ -6,21 +11,31 @@ import { ActivityCounter } from '../activityCounter/activityCounter';
 import { ActivityComp } from '../activity/activityComp';
 import { ActivitiesTotal } from '../activitiesTotal/activitiesTotal';
 import { ActivitiesTotalTime } from '../activitiesTotalTime/activitiesTotalTime';
-import { ActivitiesTotalDistance } from '../activitiesTotalDistance/activitiesTotalDistance';
+import { FavouriteActivity } from '../favouriteActivity/favouriteActivity';
 // Interfaces
 import { IAcitivityApi } from './interfaces/IActivityApi';
 import { Status } from '../createActivityForm/enums/Status';
 import { IUpdateActivity } from '../createActivityForm/interfaces/IUpdateActivity';
 // Helper function
 import { countAcitivities } from './helpers/countActivities';
+import { countTotals } from './helpers/countTotals';
+import { findMostFrequent } from './helpers/findMostFrequent';
+import { compareMostFrequent } from './helpers/compareMostFrequent';
 // Query imports
 import {
   useQuery,
   useMutation,
 } from '@tanstack/react-query';
+// Helper function
 import { sendApiRequest } from '../../helpers/sendApiRequest';
+// Context
+import { FormContext } from '../../context';
+import { Types } from '../../context/FormContext/reducers';
 
 export const ActivityArea: FC = (): ReactElement => {
+  const formContext = useContext(FormContext);
+  const { state, dispatch } = formContext;
+
   const { error, isLoading, data, refetch } = useQuery(
     ['activities'],
     async () => {
@@ -31,9 +46,20 @@ export const ActivityArea: FC = (): ReactElement => {
     },
   );
 
-  data &&
-    data.length > 0 &&
-    data.map((obj) => console.log(obj.date));
+  if (data) {
+    const t = countTotals(data);
+    console.log(t);
+    const mostFreqActivity = findMostFrequent(data);
+    console.log(mostFreqActivity);
+    let compare: string | boolean | undefined;
+    if (
+      Array.isArray(mostFreqActivity) &&
+      mostFreqActivity.length > 1
+    ) {
+      compare = compareMostFrequent(data, mostFreqActivity);
+      console.log(compare + 'Checking..');
+    }
+  }
 
   // Update activity mutation(
   const updateActivityMutation = useMutation(
@@ -44,6 +70,21 @@ export const ActivityArea: FC = (): ReactElement => {
         data,
       ),
   );
+
+  // Update UI when new activity sent to database
+  useEffect(() => {
+    refetch();
+  }, [state.updated]);
+
+  // Update UI when activity updated
+  useEffect(() => {
+    if (updateActivityMutation.isSuccess) {
+      dispatch({
+        type: Types.Update,
+        payload: !state.updated,
+      });
+    }
+  }, [updateActivityMutation.isSuccess]);
 
   function onStatusChangeHandler(
     e: React.ChangeEvent<HTMLInputElement>,
@@ -180,9 +221,32 @@ export const ActivityArea: FC = (): ReactElement => {
           mb={4}
           mt={4}
         >
-          <ActivitiesTotal />
-          <ActivitiesTotalTime />
-          <ActivitiesTotalDistance />
+          <ActivitiesTotal
+            total={data ? countTotals(data)[0] : undefined}
+          />
+          <ActivitiesTotalTime
+            total={
+              data
+                ? (
+                    countTotals(data)[1].toString() +
+                    '.' +
+                    countTotals(data)[2]
+                  ).toString()
+                : undefined
+            }
+          />
+          <FavouriteActivity
+            activity={
+              data &&
+              Array.isArray(findMostFrequent(data)) &&
+              findMostFrequent(data).length > 1
+                ? compareMostFrequent(
+                    data,
+                    findMostFrequent(data),
+                  )
+                : undefined
+            }
+          />
         </Grid>
       </Grid>
     </Grid>

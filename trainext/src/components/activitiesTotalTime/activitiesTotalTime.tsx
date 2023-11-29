@@ -1,7 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 import { Box, Avatar, Typography } from '@mui/material';
+import { IActivitiesTotalTime } from './IActivitiesTotalTime';
 
-export const ActivitiesTotalTime: FC = (): ReactElement => {
+export const ActivitiesTotalTime: FC<
+  IActivitiesTotalTime
+> = (props): ReactElement => {
+  // Destructure props
+  const { total = 'hh.mm' } = props;
   return (
     <>
       <Box
@@ -25,7 +30,7 @@ export const ActivitiesTotalTime: FC = (): ReactElement => {
             variant="h4"
             sx={{ fontSize: '1.4rem' }}
           >
-            3:42
+            {total}
           </Typography>
         </Avatar>
         <Typography>Total time(h)</Typography>

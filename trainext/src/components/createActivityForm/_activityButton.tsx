@@ -16,10 +16,10 @@ import { FormContext } from '../../context/FormContext/FormContext';
 import { Types } from '../../context/FormContext/reducers';
 
 export const ActivityButton: FC = (): any => {
-  // Destructure props
-
   const formContext = useContext(FormContext);
-  const { dispatch } = formContext;
+  const { state, dispatch } = formContext;
+  const [formData, setFormData] = useState(state);
+
   const {
     activity,
     date,
@@ -48,6 +48,17 @@ export const ActivityButton: FC = (): any => {
         data,
       ),
   );
+
+  const resetInput = () => {
+    dispatch({
+      type: Types.ResetValues,
+      payload: {
+        date: new Date(),
+        time: new Date(),
+        duration: 'Add min',
+      },
+    });
+  };
 
   useEffect(() => {
     setNewActivity({
@@ -87,7 +98,8 @@ export const ActivityButton: FC = (): any => {
       return;
     }
     console.log(newActivity.duration);
-    createActivityMutation.mutate(newActivity);
+    //createActivityMutation.mutate(newActivity);
+    resetInput();
 
     dispatch({
       type: Types.Success,

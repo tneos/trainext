@@ -1,7 +1,6 @@
 import React, { FC, ReactElement } from 'react';
 import { IActivityComp } from './interfaces/IActivityComp';
 import { Status } from '../createActivityForm/enums/Status';
-import { Activity } from '../createActivityForm/enums/Activity';
 
 import { Box } from '@mui/material';
 import { ActivityInfo } from './_activityInfo';

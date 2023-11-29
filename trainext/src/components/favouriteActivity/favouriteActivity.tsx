@@ -1,12 +1,12 @@
 import React, { FC, ReactElement } from 'react';
 import { Box, Avatar, Typography } from '@mui/material';
-import { IActivitiesTotal } from './IActivitiesTotal';
+import { IFavouriteActivity } from './IFavouriteActivity';
 
-export const ActivitiesTotal: FC<IActivitiesTotal> = (
+export const FavouriteActivity: FC<IFavouriteActivity> = (
   props,
 ): ReactElement => {
   // Destructure props
-  const { total = 0 } = props;
+  const { activity = 'running' } = props;
   return (
     <>
       <Box
@@ -28,12 +28,12 @@ export const ActivitiesTotal: FC<IActivitiesTotal> = (
         >
           <Typography
             variant="h4"
-            sx={{ fontSize: '1.4rem' }}
+            sx={{ fontSize: '1rem' }}
           >
-            {total}
+            {activity}
           </Typography>
         </Avatar>
-        <Typography>Activities</Typography>
+        <Typography>Favourite activity</Typography>
       </Box>
     </>
   );

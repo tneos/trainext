@@ -11,6 +11,7 @@ export enum Types {
   IsLoading = 'IS_LOADING',
   Success = 'SUCCESS',
   NotValid = 'NOT_VALID',
+  ResetValues = 'RESET_VALUES',
 }
 
 type StatusType =
@@ -55,6 +56,14 @@ export type ActivityActionType =
   | {
       type: Types.Success;
       payload: boolean;
+    }
+  | {
+      type: Types.ResetValues;
+      payload: {
+        date: Date;
+        time: Date;
+        duration: string;
+      };
     };
 
 type ActivityFormType = {
@@ -106,6 +115,13 @@ export const activityReducer = (
       return {
         ...state,
         updated: action.payload,
+      };
+    case Types.ResetValues:
+      return {
+        ...state,
+        date: action.payload.date,
+        time: action.payload.time,
+        duration: action.payload.duration,
       };
     case Types.IsLoading:
       return {

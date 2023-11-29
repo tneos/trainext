@@ -32,7 +32,7 @@ type InitialStateType = {
   date: Date | null;
   time: Date | string | null;
   status: StatusType;
-  duration: string | null;
+  duration: string;
   updated: boolean;
   notValid: boolean;
   isLoading: boolean;
@@ -44,7 +44,7 @@ const initialState = {
   date: new Date(),
   time: 'hh:mm',
   status: Status.planned,
-  duration: 'hh:mm',
+  duration: 'Add min',
   updated: false,
   isLoading: false,
   notValid: false,

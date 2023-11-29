@@ -1,10 +1,12 @@
-import React, { FC, ReactElement } from 'react';
+import React, { FC, ReactElement, useContext } from 'react';
 
 import { TextField } from '@mui/material';
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 // Interface
 import { IDurationField } from './interfaces/IDurationField';
+// Context
+import { FormContext } from '../../context';
 
 export const ActivityDurationField: FC<IDurationField> = (
   props,
@@ -13,16 +15,21 @@ export const ActivityDurationField: FC<IDurationField> = (
   const {
     disabled = false,
     onChange = (duration) => console.log(duration),
+    onClick = (duration) => console.log(duration),
   } = props;
+
+  const formContext = useContext(FormContext);
+  const { state } = formContext;
 
   return (
     <>
       <TextField
         id="duration"
         name="duration"
-        placeholder="Add min"
+        value={state.duration}
         disabled={disabled}
         onChange={onChange}
+        onClick={onClick}
         sx={{
           '&::before': {
             content: '""',

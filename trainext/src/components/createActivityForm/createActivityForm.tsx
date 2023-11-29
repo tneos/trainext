@@ -42,6 +42,10 @@ export const CreateActivityForm: FC = (): ReactElement => {
   useEffect(() => {
     if (formContext.state.isSuccess) {
       setSuccess(true);
+      dispatch({
+        type: Types.Update,
+        payload: !state.updated,
+      });
     } else {
       setSuccess(false);
     }
@@ -60,6 +64,9 @@ export const CreateActivityForm: FC = (): ReactElement => {
     formContext.state.isSuccess,
     formContext.state.isLoading,
     formContext.state.notValid,
+    formContext.state.duration,
+    formContext.state.date,
+    formContext.state.time,
   ]);
 
   const onChangeInput = (e: SelectChangeEvent) => {
@@ -101,6 +108,10 @@ export const CreateActivityForm: FC = (): ReactElement => {
       type: Types.AddTime,
       payload: moment(value).format('HH mm'),
     });
+  };
+
+  const onClickDuration = (e: any) => {
+    e.target.value = '';
   };
 
   const onChangeDuration = (
@@ -333,6 +344,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
         <ActivityDurationField
           disabled={loading}
           onChange={onChangeDuration}
+          onClick={onClickDuration}
         />
       </Stack>
     </Box>
