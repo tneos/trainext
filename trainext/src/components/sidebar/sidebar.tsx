@@ -23,8 +23,9 @@ export const Sidebar: FC = (): ReactElement => {
           backgroundImage: `url(${Image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          width: '41.7%',
-          top: '0px',
+          width: { md: '41.7%', xs: '100%' },
+          height: { xs: '100%' },
+          top: { md: '0px', xs: '77%' },
           right: '0',
           bottom: '0px',
 
@@ -53,7 +54,7 @@ export const Sidebar: FC = (): ReactElement => {
       <Box
         sx={{
           position: 'absolute',
-          right: '10.8%',
+          right: { xs: '27.8%', md: '10.8%' },
         }}
       >
         <ActivityButton />

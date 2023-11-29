@@ -24,8 +24,8 @@ export const ActivityCounter: FC<IActivityCounter> = (
             backgroundColor: 'transparent',
             color: '#000000',
             border: '5px solid',
-            width: '96px',
-            height: '96px',
+            width: { xs: '82px', sm: '96px' },
+            height: { xs: '82px', sm: '96px' },
             marginBottom: '16px',
             borderColor: `${emitCorrectBorderColor(
               status,

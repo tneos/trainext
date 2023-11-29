@@ -216,7 +216,7 @@ export const ActivityArea: FC = (): ReactElement => {
           flexDirection="row"
           justifyContent="space-around"
           alignItems="center"
-          md={12}
+          md={6}
           xs={12}
           mb={4}
           mt={4}

@@ -17,8 +17,7 @@ import { Types } from '../../context/FormContext/reducers';
 
 export const ActivityButton: FC = (): any => {
   const formContext = useContext(FormContext);
-  const { state, dispatch } = formContext;
-  const [formData, setFormData] = useState(state);
+  const { dispatch } = formContext;
 
   const {
     activity,
@@ -132,7 +131,7 @@ export const ActivityButton: FC = (): any => {
       sx={{
         backgroundColor: '#4B9D54',
         textDecoration: 'none',
-        width: '20vw',
+        width: { xs: '50vw', md: '20vw' },
         height: '2.5rem',
         borderRadius: '5px',
         letterSpacing: '2px',
