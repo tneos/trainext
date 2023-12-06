@@ -131,8 +131,9 @@ export const ActivityButton: FC = (): any => {
       sx={{
         backgroundColor: '#4B9D54',
         textDecoration: 'none',
-        width: { xs: '50vw', md: '20vw' },
+        width: { xs: '50vw', md: '18vw' },
         height: '2.5rem',
+        margin: '2rem 0',
         borderRadius: '5px',
         letterSpacing: '2px',
       }}

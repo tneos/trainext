@@ -16,9 +16,7 @@ code {
 .selectInput {
   color: #000000 !important;
 }
-.select-activity {
-  width: 85% !important;
-}
+
 .MuiMenu-list {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
@@ -55,3 +53,26 @@ code {
   border-color: rgba(195, 195, 195, 0.3) !important;
   cursor: not-allowed;
 }
+
+/* Customize select activity bar */
+.select-activity {
+  width: 100%;
+  /* margin-left: 25%; */
+
+  /* @media only screen and (max-width: 600px) {
+    margin-left: 20vw;
+  } */
+}
+/* .select-activity {
+  margin-left: 25%;
+
+  @media only screen and (max-width: 600px) {
+    margin-left: 20vw;
+    width: 100%;
+  }
+} */
+
+/* Customize time element */
+/* .timefield {
+  margin-top: 0 !important;
+} */

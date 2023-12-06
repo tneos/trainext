@@ -31,6 +31,8 @@ export const Profile: FC<IProfile> = (
           left: '0',
           zIndex: '1',
           opacity: '0.65',
+          ['@media (min-height:800px)']: { height: '20vh' },
+          ['@media (max-height:600px)']: { height: '40vh' },
         },
 
         position: 'relative',
@@ -38,6 +40,8 @@ export const Profile: FC<IProfile> = (
         height: '25vh',
         top: '5%',
         left: '10%',
+        ['@media (min-height:800px)']: { height: '20vh' },
+        ['@media (max-height:600px)']: { height: '40vh' },
       }}
     >
       <FaceTwoToneIcon

@@ -23,18 +23,19 @@ export const ActivityCounter: FC<IActivityCounter> = (
           sx={{
             backgroundColor: 'transparent',
             color: '#000000',
-            border: '5px solid',
-            width: { xs: '82px', sm: '96px' },
-            height: { xs: '82px', sm: '96px' },
+            border: { xs: '3px solid', sm: '5px solid' },
+            width: { xs: '64px', sm: '96px' },
+            height: { xs: '64px', sm: '96px' },
             marginBottom: '16px',
-            borderColor: `${emitCorrectBorderColor(
-              status,
-            )}`,
+            borderColor: {
+              xs: `${emitCorrectBorderColor(status)}`,
+              sm: `${emitCorrectBorderColor(status)}`,
+            },
           }}
         >
           <Typography
             variant="h4"
-            sx={{ fontSize: '1.4rem' }}
+            sx={{ fontSize: '1rem' }}
           >
             {count}
           </Typography>

@@ -151,7 +151,14 @@ export const CreateActivityForm: FC = (): ReactElement => {
       px={4}
       mt={8}
       mb={6}
-      sx={{ position: 'relative' }}
+      sx={{
+        position: 'relative',
+        marginTop: { xs: '34px', md: '68px' },
+        marginBottom: { xs: '16px' },
+        ['@media (min-height:800px)']: {
+          marginTop: '102px',
+        },
+      }}
     >
       {invalid && (
         <Alert
@@ -245,8 +252,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
         Add Activity
       </Typography>
       <Stack
-        sx={{ width: '100%' }}
-        className="select-activity"
+        sx={{ width: '100%', paddingTop: { xs: '1rem' } }}
       >
         <ActivitySelectField
           label="Activity"
@@ -289,10 +295,17 @@ export const CreateActivityForm: FC = (): ReactElement => {
         />
       </Stack>
       <Stack
-        sx={{ width: '100%', height: '8vh' }}
+        sx={{
+          width: '100%',
+          height: { xs: '16vh', sm: '8vh' },
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          marginTop: { xs: '32px' },
+          ['@media (min-height:800px)']: {
+            marginTop: '72px',
+          },
+        }}
         display="flex"
-        direction="row"
-        justifyContent="space-between"
         mt={8}
         spacing={2}
       >
@@ -307,11 +320,18 @@ export const CreateActivityForm: FC = (): ReactElement => {
         />
       </Stack>
       <Stack
-        sx={{ width: '100%', height: '8vh' }}
+        sx={{
+          width: '100%',
+          height: { xs: '16vh', sm: '8vh' },
+          flexDirection: { xs: 'column', sm: 'row' },
+          justifyContent: 'space-between',
+          marginTop: { xs: '36px' },
+          ['@media (min-height:800px)']: {
+            marginTop: '64px',
+          },
+        }}
         display="flex"
-        direction="row"
-        justifyContent="space-between"
-        spacing={4}
+        spacing={2}
         mt={4}
       >
         <ActivitySelectField

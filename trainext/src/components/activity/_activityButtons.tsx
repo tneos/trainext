@@ -30,26 +30,37 @@ export const ActivityButtons: FC<IActivityButtons> = (
     >
       <FormControlLabel
         label={
-          <Typography fontSize="0.7rem">Started</Typography>
+          <Typography
+            sx={{
+              fontSize: { xs: '0.6rem', md: '0.7rem' },
+            }}
+          >
+            Started
+          </Typography>
         }
         control={
           <Switch
             onChange={(e) => onStatusChange(e, id)}
             color="warning"
             defaultChecked={status === Status.started}
+            size="small"
           />
         }
       ></FormControlLabel>
       <Box
         display="flex"
         justifyContent="space-between"
-        width="40%"
         textAlign="center"
+        sx={{
+          width: { xs: '55%', md: '40%' },
+        }}
       >
         <Typography
           variant="h6"
-          fontSize="0.7rem"
           margin="auto"
+          sx={{
+            fontSize: { xs: '0.6rem', md: '0.7rem' },
+          }}
         >
           Mark as completed
         </Typography>

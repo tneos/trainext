@@ -20,20 +20,27 @@ export const FavouriteActivity: FC<IFavouriteActivity> = (
             backgroundColor: 'transparent',
             color: '#000000',
             border: '3px solid',
-            width: '96px',
-            height: '96px',
+            width: { xs: '64px', sm: '96px' },
+            height: { xs: '64px', sm: '96px' },
             marginBottom: '16px',
             borderColor: '#000000',
           }}
         >
           <Typography
             variant="h4"
-            sx={{ fontSize: '1rem' }}
+            sx={{ fontSize: { xs: '0.7rem', md: '1rem' } }}
           >
             {activity}
           </Typography>
         </Avatar>
-        <Typography>Favourite activity</Typography>
+        <Typography
+          sx={{
+            fontSize: { xs: '0.8rem', md: '1rem' },
+            height: { xs: '3rem' },
+          }}
+        >
+          Mostly done
+        </Typography>
       </Box>
     </>
   );

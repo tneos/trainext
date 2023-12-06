@@ -26,20 +26,25 @@ export const ActivityInfo: FC<IActivityInfo> = (
         <Box>
           <Typography
             variant="h6"
-            fontSize="0.8rem"
             lineHeight="2rem"
             ml={0.5}
-            sx={{ verticalAlign: 'middle' }}
+            sx={{
+              verticalAlign: 'middle',
+              fontSize: { xs: '0.6rem', md: '0.8rem' },
+              lineHeight: { xs: '1.6rem' },
+            }}
           >
             {duration} {title}
           </Typography>
         </Box>
-        <Box>
+        <Box sx={{ width: { xs: '60%', sm: '34%' } }}>
           <Chip
             variant="outlined"
             label={format(date, 'PPP')}
             sx={{
-              fontSize: '0.7rem',
+              fontSize: { xs: '0.6rem', md: '0.7rem' },
+              height: { xs: '1.5rem' },
+              lineHeight: { xs: '1.8' },
             }}
           ></Chip>
         </Box>

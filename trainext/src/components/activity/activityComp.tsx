@@ -32,6 +32,7 @@ export const ActivityComp: FC<IActivityComp> = (
       sx={{
         width: '100%',
         borderRadius: '8px',
+        padding: { xs: '10px' },
         border: '1px solid',
         borderColor: renderStatusBorderColor(status),
       }}

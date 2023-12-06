@@ -13,6 +13,7 @@ export const Logo: FC = (): ReactElement => {
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           width: '50%',
+          ['@media (max-height:600px)']: { height: '40vh' },
         }}
       ></Box>
     </>

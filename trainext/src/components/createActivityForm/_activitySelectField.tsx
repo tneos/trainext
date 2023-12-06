@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react';
+import { Box } from '@mui/material';
 import {
   FormControl,
   InputLabel,
@@ -22,60 +23,74 @@ export const ActivitySelectField: FC<ISelectField> = (
     onChange = (e: SelectChangeEvent) => console.log(e),
   } = props;
   return (
-    <FormControl
-      fullWidth
-      size="small"
+    <Box
+      position="relative"
+      className="select-activity"
       sx={{
-        '&::after': {
-          content: '""',
-          backgroundColor: '#E2E2E2',
-          position: 'absolute',
-          width: '100%',
-          height: '100%',
-          top: '0',
-          left: '0',
-          zIndex: '1',
-          opacity: '0.65',
+        width: { xs: '80%', sm: '50%' },
+        margin: {
+          xs: '0 10% !important',
+          sm: '0 !important',
         },
-        position: 'relative',
-        width: '50%',
-        height: '2.8rem',
-        zIndex: '2',
       }}
     >
-      <InputLabel
-        id={`${name}-id`}
-        className="selectInput"
+      <FormControl
+        size="small"
+        fullWidth
         sx={{
+          '&::after': {
+            content: '""',
+            backgroundColor: '#E2E2E2',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            top: '0',
+            left: '0',
+            zIndex: '1',
+            opacity: '0.65',
+          },
+          position: 'relative',
+          width: { xs: '80%', sm: '80%' },
+          margin: '0 5%',
+          alignSelf: { xs: 'center' },
+          height: '2.8rem',
           zIndex: '2',
         }}
       >
-        {label}
-      </InputLabel>
-      <Select
-        labelId={`${name}-id`}
-        id={`${name}-id-select`}
-        value={value}
-        label={label}
-        name={name}
-        onChange={onChange}
-        disabled={disabled}
-        sx={{ zIndex: 2, height: '100%' }}
-      >
-        {items.map((item, index) => (
-          <MenuItem
-            key={item.value + index}
-            value={item.value}
-            sx={{
-              backgroundColor: '#E2E2E2',
-              zIndex: '3',
-            }}
-          >
-            {item.label}
-          </MenuItem>
-        ))}
-      </Select>
-    </FormControl>
+        <InputLabel
+          id={`${name}-id`}
+          className="selectInput"
+          sx={{
+            zIndex: '2',
+          }}
+        >
+          {label}
+        </InputLabel>
+        <Select
+          labelId={`${name}-id`}
+          id={`${name}-id-select`}
+          value={value}
+          label={label}
+          name={name}
+          onChange={onChange}
+          disabled={disabled}
+          sx={{ zIndex: 2, height: '100%' }}
+        >
+          {items.map((item, index) => (
+            <MenuItem
+              key={item.value + index}
+              value={item.value}
+              sx={{
+                backgroundColor: '#E2E2E2',
+                zIndex: '3',
+              }}
+            >
+              {item.label}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
+    </Box>
   );
 };
 

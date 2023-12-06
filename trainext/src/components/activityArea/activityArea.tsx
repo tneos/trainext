@@ -183,8 +183,8 @@ export const ActivityArea: FC = (): ReactElement => {
           item
           display="flex"
           flexDirection="column"
-          xs={10}
-          md={8}
+          xs={12}
+          sm={8}
         >
           {isLoading ? (
             <LinearProgress />
@@ -216,7 +216,7 @@ export const ActivityArea: FC = (): ReactElement => {
           flexDirection="row"
           justifyContent="space-around"
           alignItems="center"
-          md={6}
+          md={12}
           xs={12}
           mb={4}
           mt={4}

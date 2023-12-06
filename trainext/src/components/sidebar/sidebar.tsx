@@ -14,7 +14,6 @@ export const Sidebar: FC = (): ReactElement => {
 
   return (
     <Grid
-      item
       md={5}
       sx={{
         '&::before': {
@@ -23,16 +22,19 @@ export const Sidebar: FC = (): ReactElement => {
           backgroundImage: `url(${Image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          width: { md: '41.7%', xs: '100%' },
+          width: '100%',
           height: { xs: '100%' },
-          top: { md: '0px', xs: '77%' },
+          top: '0',
           right: '0',
           bottom: '0px',
 
           opacity: '0.35',
           WebkitFilter: 'grayscale(1)',
         },
-        height: '100vh',
+        position: 'relative',
+        overflowY: 'scroll',
+        height: 'auto',
+        minHeight: '100% !important',
         width: '100%',
       }}
     >
@@ -53,8 +55,10 @@ export const Sidebar: FC = (): ReactElement => {
 
       <Box
         sx={{
-          position: 'absolute',
-          right: { xs: '27.8%', md: '10.8%' },
+          textAlign: 'center',
+          ['@media (min-height:801px)']: {
+            marginTop: '10rem',
+          },
         }}
       >
         <ActivityButton />

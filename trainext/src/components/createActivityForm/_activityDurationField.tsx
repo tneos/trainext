@@ -1,5 +1,5 @@
 import React, { FC, ReactElement, useContext } from 'react';
-
+import { Box } from '@mui/material';
 import { TextField } from '@mui/material';
 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
@@ -22,8 +22,19 @@ export const ActivityDurationField: FC<IDurationField> = (
   const { state } = formContext;
 
   return (
-    <>
+    <Box
+      position="relative"
+      className="timefield"
+      sx={{
+        width: { xs: '80%', sm: '50%' },
+        margin: {
+          xs: '0 10% !important',
+          sm: '0 !important',
+        },
+      }}
+    >
       <TextField
+        label="Add duration"
         id="duration"
         name="duration"
         value={state.duration}
@@ -42,18 +53,20 @@ export const ActivityDurationField: FC<IDurationField> = (
             zIndex: '1',
             opacity: '0.65',
           },
-          width: '50%',
+          width: { xs: '80%', sm: '80%' },
+          margin: '0 5%',
+          alignSelf: { xs: 'center' },
           height: '2.8rem',
-          margin: '0',
           zIndex: '1',
         }}
       />
       <AccessTimeIcon
         sx={{
-          transform: 'translate(-2.5rem, 0.6rem)',
+          position: 'absolute',
           zIndex: '3',
+          transform: 'translate(-3.8rem, 0.5rem)',
         }}
       />
-    </>
+    </Box>
   );
 };

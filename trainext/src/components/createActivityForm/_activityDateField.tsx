@@ -1,4 +1,5 @@
 import React, { FC, ReactElement } from 'react';
+import { Box } from '@mui/material';
 import { LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -17,7 +18,16 @@ export const ActivityDateField: FC<IDateField> = (
   } = props;
 
   return (
-    <>
+    <Box
+      position="relative"
+      sx={{
+        width: { xs: '80%', sm: '50%' },
+        margin: {
+          xs: '0 10% !important',
+          sm: '0 !important',
+        },
+      }}
+    >
       <LocalizationProvider dateAdapter={AdapterDateFns}>
         <DesktopDatePicker
           label="Date"
@@ -39,7 +49,9 @@ export const ActivityDateField: FC<IDateField> = (
               zIndex: '1',
               opacity: '0.65',
             },
-            width: '50%',
+            width: { xs: '80%', sm: '80%' },
+            margin: '0 5%',
+            alignSelf: { xs: 'center' },
             height: '2.8rem',
 
             zIndex: '1',
@@ -47,12 +59,13 @@ export const ActivityDateField: FC<IDateField> = (
         />
         <DateRangeIcon
           sx={{
-            transform: 'translate(-2.5rem, 0.6rem)',
+            position: 'absolute',
             zIndex: '2',
+            transform: 'translate(-3.8rem, 0.5rem)',
           }}
         />
       </LocalizationProvider>
-    </>
+    </Box>
   );
 };
 
