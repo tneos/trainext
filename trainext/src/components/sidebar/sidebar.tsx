@@ -14,7 +14,8 @@ export const Sidebar: FC = (): ReactElement => {
 
   return (
     <Grid
-      md={5}
+      md={6}
+      lg={5}
       sx={{
         '&::before': {
           content: '""',
@@ -57,7 +58,7 @@ export const Sidebar: FC = (): ReactElement => {
         sx={{
           textAlign: 'center',
           ['@media (min-height:801px)']: {
-            marginTop: '10rem',
+            margin: ' 3rem 0 5rem',
           },
         }}
       >

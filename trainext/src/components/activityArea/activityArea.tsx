@@ -113,12 +113,13 @@ export const ActivityArea: FC = (): ReactElement => {
   return (
     <Grid
       item
-      md={7}
+      md={6}
+      lg={7}
       px={4}
       sx={{
         backgroundColor: '#E2E2E2',
         overflowY: 'scroll',
-        maxHeight: '100vh',
+        width: '100%',
       }}
     >
       <Logo />

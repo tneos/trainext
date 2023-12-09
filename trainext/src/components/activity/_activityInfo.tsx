@@ -37,7 +37,11 @@ export const ActivityInfo: FC<IActivityInfo> = (
             {duration} {title}
           </Typography>
         </Box>
-        <Box sx={{ width: { xs: '60%', sm: '34%' } }}>
+        <Box
+          sx={{
+            width: { xs: '57%', sm: '38%' },
+          }}
+        >
           <Chip
             variant="outlined"
             label={format(date, 'PPP')}
@@ -45,6 +49,7 @@ export const ActivityInfo: FC<IActivityInfo> = (
               fontSize: { xs: '0.6rem', md: '0.7rem' },
               height: { xs: '1.5rem' },
               lineHeight: { xs: '1.8' },
+              width: '100%',
             }}
           ></Chip>
         </Box>

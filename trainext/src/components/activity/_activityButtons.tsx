@@ -52,7 +52,19 @@ export const ActivityButtons: FC<IActivityButtons> = (
         justifyContent="space-between"
         textAlign="center"
         sx={{
-          width: { xs: '55%', md: '40%' },
+          width: {
+            xs: '54%',
+            sm: '42%',
+            md: '50%',
+            lg: '39%',
+          },
+          ['@media (min-width:700px)']: {
+            width: '30%',
+          },
+
+          ['@media (min-width:1000px)']: {
+            width: '44%',
+          },
         }}
       >
         <Typography

@@ -27,7 +27,7 @@ export const ActivitySelectField: FC<ISelectField> = (
       position="relative"
       className="select-activity"
       sx={{
-        width: { xs: '80%', sm: '50%' },
+        width: { xs: '85%', sm: '50%' },
         margin: {
           xs: '0 10% !important',
           sm: '0 !important',
@@ -51,7 +51,7 @@ export const ActivitySelectField: FC<ISelectField> = (
           },
           position: 'relative',
           width: { xs: '80%', sm: '80%' },
-          margin: '0 5%',
+          margin: '0 5% 0 1.2em',
           alignSelf: { xs: 'center' },
           height: '2.8rem',
           zIndex: '2',

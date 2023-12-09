@@ -55,8 +55,8 @@ export const ActivityTimeField: FC<ITimeField> = (
               zIndex: '1',
               opacity: '0.65',
             },
-            width: { xs: '80%', sm: '80%' },
-            margin: '0 5%',
+            width: { xs: '85%', sm: '80%' },
+            margin: '0 5% 0 1.2em',
             alignSelf: { xs: 'center' },
             height: '2.8rem',
             zIndex: '1',
@@ -65,8 +65,13 @@ export const ActivityTimeField: FC<ITimeField> = (
         <AccessTimeIcon
           sx={{
             position: 'absolute',
+            top: '0',
+            right: '0',
             zIndex: '2',
-            transform: 'translate(-3.8rem, 0.5rem)',
+            transform: {
+              xs: 'translate(-8.8vw, 0.5rem)',
+              md: 'translate(-3.8vw, 0.5rem)',
+            },
           }}
         />
       </LocalizationProvider>

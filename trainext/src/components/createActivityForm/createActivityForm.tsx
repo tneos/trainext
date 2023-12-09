@@ -154,6 +154,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
       sx={{
         position: 'relative',
         marginTop: { xs: '34px', md: '68px' },
+        paddingTop: { xs: '1rem', md: '0' },
         marginBottom: { xs: '16px' },
         ['@media (min-height:800px)']: {
           marginTop: '102px',
@@ -252,7 +253,11 @@ export const CreateActivityForm: FC = (): ReactElement => {
         Add Activity
       </Typography>
       <Stack
-        sx={{ width: '100%', paddingTop: { xs: '1rem' } }}
+        sx={{
+          width: '100%',
+          paddingTop: { xs: '1rem' },
+          position: 'relative',
+        }}
       >
         <ActivitySelectField
           label="Activity"
@@ -297,7 +302,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
       <Stack
         sx={{
           width: '100%',
-          height: { xs: '16vh', sm: '8vh' },
+          height: { xs: '18vh', sm: '8vh' },
           flexDirection: { xs: 'column', sm: 'row' },
           justifyContent: 'space-between',
           marginTop: { xs: '32px' },
@@ -322,7 +327,7 @@ export const CreateActivityForm: FC = (): ReactElement => {
       <Stack
         sx={{
           width: '100%',
-          height: { xs: '16vh', sm: '8vh' },
+          height: { xs: '18vh', sm: '8vh' },
           flexDirection: { xs: 'column', sm: 'row' },
           justifyContent: 'space-between',
           marginTop: { xs: '36px' },

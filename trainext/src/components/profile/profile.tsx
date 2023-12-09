@@ -46,13 +46,18 @@ export const Profile: FC<IProfile> = (
     >
       <FaceTwoToneIcon
         fontSize="large"
-        sx={{ zIndex: '2' }}
+        sx={{
+          zIndex: '2',
+          width: '0.7em',
+          height: '0.7em',
+        }}
       />
       <Typography
         variant="h5"
         color="#000000"
         sx={{
           fontWeight: 'light',
+          fontSize: '1.2rem',
           letterSpacing: '1px',
           zIndex: '2',
         }}
@@ -65,6 +70,7 @@ export const Profile: FC<IProfile> = (
           fontWeight: 'light',
           mb: '0',
           zIndex: '2',
+          fontSize: '0.8rem',
         }}
       >
         Your personal fitness log

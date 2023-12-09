@@ -35,6 +35,11 @@ export const ActivityComp: FC<IActivityComp> = (
         padding: { xs: '10px' },
         border: '1px solid',
         borderColor: renderStatusBorderColor(status),
+        ['@media (min-width: 460px) and  (max-width:600px)']:
+          {
+            width: '70%',
+            margin: '1rem 15%',
+          },
       }}
     >
       <ActivityInfo
