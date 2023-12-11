@@ -27,7 +27,7 @@ import { Activity } from './enums/Activity';
 
 // Context
 import { FormContext } from '../../context/FormContext/FormContext';
-import { Types } from '../../context/FormContext/reducers';
+import { Types } from '../../context/FormContext/ActivityReducer';
 
 export const CreateActivityForm: FC = (): ReactElement => {
   // Initialize context

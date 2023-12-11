@@ -30,7 +30,7 @@ import {
 import { sendApiRequest } from '../../helpers/sendApiRequest';
 // Context
 import { FormContext } from '../../context';
-import { Types } from '../../context/FormContext/reducers';
+import { Types } from '../../context/FormContext/ActivityReducer';
 
 export const ActivityArea: FC = (): ReactElement => {
   const formContext = useContext(FormContext);
@@ -46,20 +46,20 @@ export const ActivityArea: FC = (): ReactElement => {
     },
   );
 
-  if (data) {
-    const t = countTotals(data);
-    console.log(t);
-    const mostFreqActivity = findMostFrequent(data);
-    console.log(mostFreqActivity);
-    let compare: string | boolean | undefined;
-    if (
-      Array.isArray(mostFreqActivity) &&
-      mostFreqActivity.length > 1
-    ) {
-      compare = compareMostFrequent(data, mostFreqActivity);
-      console.log(compare + 'Checking..');
-    }
-  }
+  // if (data) {
+  //   const t = countTotals(data);
+  //   console.log(t);
+  //   const mostFreqActivity = findMostFrequent(data);
+  //   console.log(mostFreqActivity);
+  //   let compare: string | boolean | undefined;
+  //   if (
+  //     Array.isArray(mostFreqActivity) &&
+  //     mostFreqActivity.length > 1
+  //   ) {
+  //     compare = compareMostFrequent(data, mostFreqActivity);
+  //     console.log(compare + 'Checking..');
+  //   }
+  // }
 
   // Update activity mutation(
   const updateActivityMutation = useMutation(

@@ -7,13 +7,13 @@ import React, {
 import { useMutation } from '@tanstack/react-query';
 import { Link } from '@mui/material';
 // Interface
-import { ICreateActivity } from '../activityArea/interfaces/iCreateActivity';
+import { ICreateActivity } from '../activityArea/interfaces/ICreateActivity';
 // Helper function
 import { sendApiRequest } from '../../helpers/sendApiRequest';
 // Context
 import { FormContext } from '../../context/FormContext/FormContext';
 // Types
-import { Types } from '../../context/FormContext/reducers';
+import { Types } from '../../context/FormContext/ActivityReducer';
 
 export const ActivityButton: FC = (): any => {
   const formContext = useContext(FormContext);
@@ -96,8 +96,8 @@ export const ActivityButton: FC = (): any => {
       });
       return;
     }
-    console.log(newActivity.duration);
-    //createActivityMutation.mutate(newActivity);
+
+    createActivityMutation.mutate(newActivity);
     resetInput();
 
     dispatch({

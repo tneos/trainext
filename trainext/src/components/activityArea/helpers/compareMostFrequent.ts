@@ -8,9 +8,8 @@ export const compareMostFrequent = (
   if (!Array.isArray(activities)) {
     return false;
   } else {
-    console.log(activities);
     const frequentActivities: IAcitivityApi[] = [];
-    console.log(mostFrequent);
+
     mostFrequent.map((string) => {
       activities.map(
         (obj) =>
@@ -27,15 +26,12 @@ export const compareMostFrequent = (
       durationNumValues.push(Number(durationArray[0]));
     });
 
-    console.log(durationNumValues);
-
     let largest = 0;
     for (let i = 0; i < frequentActivities.length; i++) {
       if (Number(durationNumValues[i]) > largest) {
         largest = Number(durationNumValues[i]);
       }
     }
-    console.log(largest);
 
     const targetActivity = frequentActivities.map((obj) => {
       const durationArray = obj.duration.split(' ');

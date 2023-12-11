@@ -12,7 +12,7 @@ import { Status } from '../../components/createActivityForm/enums/Status';
 import {
   activityReducer,
   ActivityActionType,
-} from './reducers';
+} from './ActivityReducer';
 
 // Types
 export type StatusType =
