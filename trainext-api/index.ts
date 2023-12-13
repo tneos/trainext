@@ -36,7 +36,7 @@ export const AppDataSource =
   //     })
   //   :
   new DataSource({
-    type: 'mysql',
+    type: 'postgres',
     url: process.env.MYSQL__ADDON_URI,
     port: 3306,
     // username: process.env.MYSQL_ADDON_USER,
