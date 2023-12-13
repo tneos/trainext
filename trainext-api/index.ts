@@ -20,11 +20,11 @@ app.use(cors());
 // Create Database connection -- TODO conditionally set synchronize property(true for development mode)
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: process.env.MYSQL_ADDON_HOST,
+  host: process.env.DB_HOST,
   port: 3306,
-  username: process.env.MYSQL_ADDON_USER,
-  password: process.env.MYSQL_ADDON_PASSWORD,
-  database: process.env.MYSQL_ADDON_DB,
+  username: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASSWORD,
+  database: process.env.MYSQL_DB,
   entities: [Session],
   synchronize: true,
 });
@@ -47,7 +47,7 @@ export const AppDataSource = new DataSource({
 // });
 
 // Define server port
-const port = 3306;
+const port = process.env.PORT || 3100;
 
 // Initialize typeORM
 AppDataSource.initialize()
