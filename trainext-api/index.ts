@@ -38,12 +38,18 @@ export const AppDataSource =
   new DataSource({
     type: 'postgres',
     url: process.env.MYSQL__ADDON_URI,
-    port: 3306,
+    logging: false,
+    // port: 3306,
     // username: process.env.MYSQL_ADDON_USER,
     // password: process.env.MYSQL_ADDON_PASSWORD,
     // database: process.env.MYSQL_ADDON_DB,
     entities: [Session],
     synchronize: false,
+    extra: {
+      ssl: {
+        rejectUnauthorized: false,
+      },
+    },
   });
 
 // Define server port
