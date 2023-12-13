@@ -36,7 +36,7 @@ export const AppDataSource =
       })
     : new DataSource({
         type: 'mysql',
-        host: process.env.DB__ADDON_HOST,
+        host: process.env.MYSQL__ADDON_HOST,
         port: 3306,
         username: process.env.MYSQL_ADDON_USER,
         password: process.env.MYSQL_ADDON_PASSWORD,
