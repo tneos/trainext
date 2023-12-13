@@ -37,11 +37,11 @@ export const AppDataSource =
   //   :
   new DataSource({
     type: 'mysql',
-    host: process.env.MYSQL__ADDON_HOST,
+    url: process.env.MYSQL__ADDON_URI,
     port: 3306,
-    username: process.env.MYSQL_ADDON_USER,
-    password: process.env.MYSQL_ADDON_PASSWORD,
-    database: process.env.MYSQL_ADDON_DB,
+    // username: process.env.MYSQL_ADDON_USER,
+    // password: process.env.MYSQL_ADDON_PASSWORD,
+    // database: process.env.MYSQL_ADDON_DB,
     entities: [Session],
     synchronize: false,
   });
