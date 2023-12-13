@@ -24,11 +24,11 @@ app.get('/', (req, res) => {
 // Create Database connection -- TODO conditionally set synchronize property(true for development mode)
 export const AppDataSource = new DataSource({
   type: 'mysql',
-  host: process.env.DB_HOST,
+  host: process.env.MYSQL_ADDON_HOST,
   port: 3306,
-  username: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB,
+  username: process.env.MYSQL_ADDON_USER,
+  password: process.env.MYSQL_ADDON_PASSWORD,
+  database: process.env.MYSQL_ADDON_DB,
   entities: [Session],
   synchronize: true,
 });
