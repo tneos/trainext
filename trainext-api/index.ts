@@ -22,16 +22,28 @@ app.get('/', (req, res) => {
 });
 
 // Create Database connection -- TODO conditionally set synchronize property(true for development mode)
-export const AppDataSource = new DataSource({
-  type: 'mysql',
-  host: process.env.DB_HOST,
-  port: 3306,
-  username: process.env.MYSQL_USER,
-  password: process.env.MYSQL_PASSWORD,
-  database: process.env.MYSQL_DB,
-  entities: [Session],
-  synchronize: true,
-});
+export const AppDataSource =
+  process.env.DB_HOST === '127.0.0.1'
+    ? new DataSource({
+        type: 'mysql',
+        host: process.env.DB_HOST,
+        port: 3306,
+        username: process.env.MYSQL_USER,
+        password: process.env.MYSQL_PASSWORD,
+        database: process.env.MYSQL_DB,
+        entities: [Session],
+        synchronize: true,
+      })
+    : new DataSource({
+        type: 'mysql',
+        host: process.env.DB_HOST,
+        port: 3306,
+        username: process.env.MYSQL_CLOUD_USER,
+        password: process.env.MYSQL_CLOUD_PASSWORD,
+        database: process.env.MYSQL_CLOUD_DB,
+        entities: [Session],
+        synchronize: false,
+      });
 
 // Define server port
 const port = process.env.PORT;
