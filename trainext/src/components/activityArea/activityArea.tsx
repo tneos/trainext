@@ -39,10 +39,15 @@ export const ActivityArea: FC = (): ReactElement => {
   const { error, isLoading, data, refetch } = useQuery(
     ['activities'],
     async () => {
-      return await sendApiRequest<IAcitivityApi[]>(
-        'https://trainext-api.onrender.com/activities',
-        'GET',
-      );
+      return process.env.REACT_APP_ENV !== 'production'
+        ? await sendApiRequest<IAcitivityApi[]>(
+            `${process.env.REACT_APP_LOCAL}`,
+            'GET',
+          )
+        : await sendApiRequest<IAcitivityApi[]>(
+            `${process.env.REACT_APP_REMOTE}`,
+            'GET',
+          );
     },
   );
 
