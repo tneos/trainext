@@ -16,10 +16,6 @@ app.use(bodyParser.json());
 
 // Use of CORS install types
 app.use(cors());
-app.get('/', (req, res) => {
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.send('API is running..');
-});
 
 // Create Database connection -- TODO conditionally set synchronize property(true for development mode)
 export const AppDataSource = new DataSource({
@@ -51,7 +47,7 @@ export const AppDataSource = new DataSource({
 // });
 
 // Define server port
-const port = process.env.PORT;
+const port = 3306;
 
 // Initialize typeORM
 AppDataSource.initialize()
