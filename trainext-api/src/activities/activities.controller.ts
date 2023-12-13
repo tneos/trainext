@@ -31,7 +31,7 @@ class ActivitiesController {
       allActivities = instanceToPlain(
         allActivities,
       ) as Session[];
-
+      console.log(allActivities);
       return res.json(allActivities).status(200);
     } catch (_errors) {
       return res
