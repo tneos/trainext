@@ -27,7 +27,7 @@ export const AppDataSource =
     ? new DataSource({
         type: 'mysql',
         host: process.env.DB_HOST,
-        port: 3306,
+        port: 3200,
         username: process.env.MYSQL_USER,
         password: process.env.MYSQL_PASSWORD,
         database: process.env.MYSQL_DB,
@@ -36,11 +36,11 @@ export const AppDataSource =
       })
     : new DataSource({
         type: 'mysql',
-        host: process.env.DB__CLOUD_HOST,
+        host: process.env.DB__ADDON_HOST,
         port: 3306,
-        username: process.env.MYSQL_CLOUD_USER,
-        password: process.env.MYSQL_CLOUD_PASSWORD,
-        database: process.env.MYSQL_CLOUD_DB,
+        username: process.env.MYSQL_ADDON_USER,
+        password: process.env.MYSQL_ADDON_PASSWORD,
+        database: process.env.MYSQL_ADDON_DB,
         entities: [Session],
         synchronize: false,
       });
