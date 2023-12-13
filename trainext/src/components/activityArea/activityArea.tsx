@@ -40,7 +40,7 @@ export const ActivityArea: FC = (): ReactElement => {
     ['activities'],
     async () => {
       return await sendApiRequest<IAcitivityApi[]>(
-        'bwimcwehrfqowh1wwx4a-mysql.services.clever-cloud.com/activities',
+        'https://trainext-api.onrender.com/activities',
         'GET',
       );
     },
@@ -50,7 +50,7 @@ export const ActivityArea: FC = (): ReactElement => {
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
       sendApiRequest(
-        'bwimcwehrfqowh1wwx4a-mysql.services.clever-cloud.com/activities',
+        'https://trainext-api.onrender.com/activities',
         'PUT',
         data,
       ),
