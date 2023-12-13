@@ -3,8 +3,8 @@ import express, { Express } from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import { DataSource } from 'typeorm';
-import { Session } from './src/activities/activities.entity';
+// import { DataSource } from 'typeorm';
+// import { Session } from './src/activities/activities.entity';
 import { activitiesRouter } from './src/activities/activities.router';
 
 const mysql = require('mysql2');
@@ -76,6 +76,11 @@ app.listen(port, () =>
 //     console.log('Data source has been initialized');
 //   })
 //   .catch((err) => console.log(err));
+
+con.connect(function (err: any) {
+  if (err) throw err;
+  console.log('Connected..');
+});
 
 // Routes
 app.use('/', activitiesRouter);
