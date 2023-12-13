@@ -28,23 +28,6 @@ export const AppDataSource = new DataSource({
   entities: [Session],
   synchronize: true,
 });
-//   :
-// new DataSource({
-//   type: 'mysql',
-//   url: process.env.MYSQL__ADDON_URI,
-//   logging: false,
-//   port: 3306,
-//   username: process.env.MYSQL_ADDON_USER,
-//   password: process.env.MYSQL_ADDON_PASSWORD,
-//   database: process.env.MYSQL_ADDON_DB,
-//   entities: [Session],
-//   synchronize: false,
-//   extra: {
-//     ssl: {
-//       rejectUnauthorized: false,
-//     },
-//   },
-// });
 
 // Define server port
 const port = process.env.PORT || 3100;
