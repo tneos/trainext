@@ -40,32 +40,17 @@ export const ActivityArea: FC = (): ReactElement => {
     ['activities'],
     async () => {
       return await sendApiRequest<IAcitivityApi[]>(
-        'http://localhost:3200/activities',
+        'bwimcwehrfqowh1wwx4a-mysql.services.clever-cloud.com/activities',
         'GET',
       );
     },
   );
 
-  // if (data) {
-  //   const t = countTotals(data);
-  //   console.log(t);
-  //   const mostFreqActivity = findMostFrequent(data);
-  //   console.log(mostFreqActivity);
-  //   let compare: string | boolean | undefined;
-  //   if (
-  //     Array.isArray(mostFreqActivity) &&
-  //     mostFreqActivity.length > 1
-  //   ) {
-  //     compare = compareMostFrequent(data, mostFreqActivity);
-  //     console.log(compare + 'Checking..');
-  //   }
-  // }
-
   // Update activity mutation(
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
       sendApiRequest(
-        'http://localhost:3200/activities',
+        'bwimcwehrfqowh1wwx4a-mysql.services.clever-cloud.com/activities',
         'PUT',
         data,
       ),
