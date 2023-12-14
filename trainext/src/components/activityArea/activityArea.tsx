@@ -48,10 +48,6 @@ export const ActivityArea: FC = (): ReactElement => {
             `${process.env.REACT_APP_REMOTE}`,
             'GET',
           );
-      // return await sendApiRequest<IAcitivityApi[]>(
-      //   'http://localhost:3100/activities',
-      //   'GET',
-      // );
     },
   );
 
