@@ -33,6 +33,8 @@ export async function sendApiRequest<T>(
     relevantRequest(method, data),
   );
 
+  console.log(response);
+
   if (!response.ok) {
     const message = `An error has occured: ${response.status}`;
     throw new Error(message);
