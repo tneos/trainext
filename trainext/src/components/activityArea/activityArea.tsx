@@ -51,6 +51,8 @@ export const ActivityArea: FC = (): ReactElement => {
     },
   );
 
+  console.log(error);
+
   // Update activity mutation(
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
