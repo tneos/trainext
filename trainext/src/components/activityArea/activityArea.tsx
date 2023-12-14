@@ -41,11 +41,11 @@ export const ActivityArea: FC = (): ReactElement => {
     async () => {
       return process.env.REACT_APP_ENV !== 'production'
         ? await sendApiRequest<IAcitivityApi[]>(
-            `${process.env.REACT_APP_LOCAL}`,
+            `${process.env.REACT_APP_LOCAL}/activities`,
             'GET',
           )
         : await sendApiRequest<IAcitivityApi[]>(
-            `${process.env.REACT_APP_REMOTE}`,
+            `${process.env.REACT_APP_REMOTE}/activities`,
             'GET',
           );
     },
