@@ -191,7 +191,6 @@ export const ActivityArea: FC = (): ReactElement => {
                   key={index + obj.status}
                   duration={obj.duration}
                   title={obj.activity}
-                  date={new Date(obj.date)}
                   status={obj.status}
                   id={obj.id}
                   onStatusChange={onStatusChangeHandler}

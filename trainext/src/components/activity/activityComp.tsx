@@ -21,6 +21,8 @@ export const ActivityComp: FC<IActivityComp> = (
     status = Status.completed,
     id,
   } = props;
+
+  console.log(date);
   return (
     <Box
       display="flex"

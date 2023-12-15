@@ -12,7 +12,7 @@ export const ActivityInfo: FC<IActivityInfo> = (
   // Destructure props
   const {
     title = 'Walking',
-    duration = '25min ',
+    duration = '25 min',
     date = new Date(),
   } = props;
 
