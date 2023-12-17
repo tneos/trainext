@@ -51,16 +51,20 @@ export const ActivityArea: FC = (): ReactElement => {
     },
   );
 
-  console.log(error);
-
   // Update activity mutation(
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
-      sendApiRequest(
-        'https://trainext-api.onrender.com/activities',
-        'PUT',
-        data,
-      ),
+      process.env.REACT_APP_ENV !== 'production'
+        ? sendApiRequest(
+            'http://localhost:3100/activities',
+            'PUT',
+            data,
+          )
+        : sendApiRequest(
+            'https://trainext-api.onrender.com/activities',
+            'PUT',
+            data,
+          ),
   );
 
   // Update UI when new activity sent to database

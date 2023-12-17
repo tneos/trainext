@@ -41,11 +41,17 @@ export const ActivityButton: FC = (): any => {
 
   const createActivityMutation = useMutation(
     (data: ICreateActivity) =>
-      sendApiRequest(
-        'http://localhost:3200/activities',
-        'POST',
-        data,
-      ),
+      process.env.REACT_APP_ENV !== 'production'
+        ? sendApiRequest(
+            'http://localhost:3100/activities',
+            'POST',
+            data,
+          )
+        : sendApiRequest(
+            'https://trainext-api.onrender.com/activities',
+            'POST',
+            data,
+          ),
   );
 
   const resetInput = () => {
