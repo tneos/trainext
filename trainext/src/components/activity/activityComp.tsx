@@ -22,7 +22,6 @@ export const ActivityComp: FC<IActivityComp> = (
     id,
   } = props;
 
-  console.log(date);
   return (
     <Box
       display="flex"

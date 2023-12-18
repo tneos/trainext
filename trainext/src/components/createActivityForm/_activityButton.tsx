@@ -39,9 +39,11 @@ export const ActivityButton: FC = (): any => {
       duration: duration,
     });
 
+  console.log(process.env.REACT_APP_ENV);
+
   const createActivityMutation = useMutation(
     (data: ICreateActivity) =>
-      process.env.REACT_APP_ENV !== 'production'
+      process.env.REACT_APP_ENV === 'development'
         ? sendApiRequest(
             'http://127.0.0.1:3100/activities',
             'POST',
