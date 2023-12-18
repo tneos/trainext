@@ -56,14 +56,14 @@ export const ActivityArea: FC = (): ReactElement => {
   // Update activity mutation(
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
-      process.env.REACT_APP_ENV !== 'production'
+      process.env.REACT_APP_ENV !== 'development'
         ? sendApiRequest(
-            'http://localhost:3100/activities',
+            'https://trainext-api.onrender.com/activities',
             'PUT',
             data,
           )
         : sendApiRequest(
-            'https://trainext-api.onrender.com/activities',
+            'http://localhost:3100/activities',
             'PUT',
             data,
           ),
@@ -118,6 +118,7 @@ export const ActivityArea: FC = (): ReactElement => {
         backgroundColor: '#E2E2E2',
         overflowY: 'scroll',
         width: '100%',
+        height: '100%',
       }}
     >
       <Logo />
