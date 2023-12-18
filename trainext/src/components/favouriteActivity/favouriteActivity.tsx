@@ -39,7 +39,7 @@ export const FavouriteActivity: FC<IFavouriteActivity> = (
             height: { xs: '3rem' },
           }}
         >
-          Mostly done
+          Fav Activity
         </Typography>
       </Box>
     </>

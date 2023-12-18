@@ -43,7 +43,7 @@ export const ActivityButton: FC = (): any => {
     (data: ICreateActivity) =>
       process.env.REACT_APP_ENV !== 'production'
         ? sendApiRequest(
-            'http://localhost:3100/activities',
+            'http://127.0.0.1:3100/activities',
             'POST',
             data,
           )
