@@ -1,7 +1,7 @@
 import { IAcitivityApi } from '../interfaces/IActivityApi';
 
 export const findMostFrequent = (
-  activities: IAcitivityApi[],
+  activities: IAcitivityApi[] | undefined,
 ): string[] | [] => {
   // Condition if activities not a valid array
   if (!Array.isArray(activities)) {

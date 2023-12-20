@@ -52,6 +52,10 @@ export const ActivityArea: FC = (): ReactElement => {
   );
 
   console.log(data);
+  data &&
+    console.log(
+      compareMostFrequent(data, findMostFrequent(data)),
+    );
 
   // Update activity mutation(
   const updateActivityMutation = useMutation(
@@ -108,6 +112,8 @@ export const ActivityArea: FC = (): ReactElement => {
     });
   }
 
+  console.log(data);
+
   return (
     <Grid
       item
@@ -138,22 +144,6 @@ export const ActivityArea: FC = (): ReactElement => {
           mb={4}
           mt={4}
         >
-          <>
-            {error && (
-              <Alert severity="error">
-                There was an error fetching your activities
-              </Alert>
-            )}
-            {!error &&
-              Array.isArray(data) &&
-              data.length === 0 && (
-                <Alert severity="warning">
-                  You don&apos;t have any activities created
-                  yet. Start by adding one.
-                </Alert>
-              )}
-          </>
-
           <ActivityCounter
             count={
               data
@@ -208,6 +198,32 @@ export const ActivityArea: FC = (): ReactElement => {
               );
             })
           )}
+          <>
+            {error && (
+              <Alert severity="error">
+                There was an error fetching your activities
+              </Alert>
+            )}
+            {!error &&
+              Array.isArray(data) &&
+              data.length === 0 && (
+                <Alert severity="warning">
+                  You don&apos;t have any activities created
+                  yet. Start by adding one.
+                </Alert>
+              )}
+            {!error &&
+              Array.isArray(data) &&
+              data.length > 0 &&
+              data.every(
+                (obj) => obj.status === 'completed',
+              ) && (
+                <Alert severity="warning">
+                  All your current activities are completed.
+                  Plan a new one.
+                </Alert>
+              )}
+          </>
         </Grid>
         <Grid
           item
@@ -228,7 +244,7 @@ export const ActivityArea: FC = (): ReactElement => {
               data
                 ? (
                     countTotals(data)[1].toString() +
-                    '.' +
+                    ':' +
                     countTotals(data)[2]
                   ).toString()
                 : undefined
@@ -243,7 +259,7 @@ export const ActivityArea: FC = (): ReactElement => {
                     data,
                     findMostFrequent(data),
                   )
-                : undefined
+                : findMostFrequent(data)[0]
             }
           />
         </Grid>

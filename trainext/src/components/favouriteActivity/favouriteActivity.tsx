@@ -6,7 +6,7 @@ export const FavouriteActivity: FC<IFavouriteActivity> = (
   props,
 ): ReactElement => {
   // Destructure props
-  const { activity = 'running' } = props;
+  const { activity = 'None' } = props;
   return (
     <>
       <Box

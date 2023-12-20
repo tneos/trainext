@@ -9,6 +9,7 @@ export const compareMostFrequent = (
     return false;
   } else {
     const frequentActivities: IAcitivityApi[] = [];
+    let targetActivity;
 
     mostFrequent.map((string) => {
       activities.map(
@@ -33,13 +34,17 @@ export const compareMostFrequent = (
       }
     }
 
-    const targetActivity = frequentActivities.map((obj) => {
+    frequentActivities.map((obj) => {
       const durationArray = obj.duration.split(' ');
+
       if (Number(durationArray[0]) === largest) {
+        targetActivity = obj.activity;
         return obj.activity;
       }
     });
 
-    return targetActivity;
+    if (targetActivity) {
+      return targetActivity;
+    }
   }
 };
