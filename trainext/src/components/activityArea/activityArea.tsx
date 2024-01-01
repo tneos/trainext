@@ -51,12 +51,6 @@ export const ActivityArea: FC = (): ReactElement => {
     },
   );
 
-  console.log(data);
-  data &&
-    console.log(
-      compareMostFrequent(data, findMostFrequent(data)),
-    );
-
   // Update activity mutation(
   const updateActivityMutation = useMutation(
     (data: IUpdateActivity) =>
@@ -111,8 +105,6 @@ export const ActivityArea: FC = (): ReactElement => {
       status: Status.completed,
     });
   }
-
-  console.log(data);
 
   return (
     <Grid
@@ -241,12 +233,17 @@ export const ActivityArea: FC = (): ReactElement => {
           />
           <ActivitiesTotalTime
             total={
-              data
-                ? (
-                    countTotals(data)[1].toString() +
-                    ':' +
-                    countTotals(data)[2]
-                  ).toString()
+              data &&
+              countTotals(data)[2].toString() !== '0'
+                ? countTotals(data)[1].toString() +
+                  ':' +
+                  countTotals(data)[2].toString()
+                : data &&
+                  countTotals(data)[2].toString() === '0'
+                ? countTotals(data)[1].toString() +
+                  ':' +
+                  countTotals(data)[2].toString() +
+                  '0'
                 : undefined
             }
           />
