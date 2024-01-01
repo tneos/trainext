@@ -40,6 +40,6 @@ AppDataSource.initialize()
     console.log('Data source has been initialized');
   })
   .catch((err) => console.log(err));
-console.log(AppDataSource);
+
 // Routes
 app.use('/', activitiesRouter);
