@@ -82,6 +82,7 @@ export const ActivityArea: FC = (): ReactElement => {
     }
   }, [updateActivityMutation.isSuccess]);
 
+  // API request to update status
   function onStatusChangeHandler(
     e: React.ChangeEvent<HTMLInputElement>,
     id: string,
@@ -94,6 +95,7 @@ export const ActivityArea: FC = (): ReactElement => {
     });
   }
 
+  // API request to to set status to completed
   function markCompleteHandler(
     e:
       | React.MouseEvent<HTMLButtonElement>

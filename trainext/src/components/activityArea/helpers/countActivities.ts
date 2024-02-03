@@ -1,6 +1,7 @@
 import { IAcitivityApi } from '../interfaces/IActivityApi';
 import { ActivityCounterStatusType } from '../../activityCounter/interfaces/IActivityCounter';
 
+// Count activities based on status
 export const countAcitivities = (
   activities: IAcitivityApi[],
   status: ActivityCounterStatusType,
