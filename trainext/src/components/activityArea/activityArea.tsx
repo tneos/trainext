@@ -25,6 +25,7 @@ import { compareMostFrequent } from './helpers/compareMostFrequent';
 import {
   useQuery,
   useMutation,
+  useQueryClient,
 } from '@tanstack/react-query';
 // Helper function
 import { sendApiRequest } from '../../helpers/sendApiRequest';
@@ -35,6 +36,7 @@ import { Types } from '../../context/FormContext/ActivityReducer';
 export const ActivityArea: FC = (): ReactElement => {
   const formContext = useContext(FormContext);
   const { state, dispatch } = formContext;
+  const queryClient = useQueryClient();
 
   const { error, isLoading, data, refetch } = useQuery(
     ['activities'],
@@ -52,8 +54,8 @@ export const ActivityArea: FC = (): ReactElement => {
   );
 
   // Update activity mutation(
-  const updateActivityMutation = useMutation(
-    (data: IUpdateActivity) =>
+  const updateActivityMutation = useMutation({
+    mutationFn: (data: IUpdateActivity) =>
       process.env.REACT_APP_ENV !== 'development'
         ? sendApiRequest(
             'https://trainext-api.onrender.com/activities',
@@ -65,7 +67,12 @@ export const ActivityArea: FC = (): ReactElement => {
             'PUT',
             data,
           ),
-  );
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ['activities'],
+      });
+    },
+  });
 
   // Update UI when new activity sent to database
   useEffect(() => {
