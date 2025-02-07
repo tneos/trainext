@@ -17,7 +17,7 @@ import { IAcitivityApi } from './interfaces/IActivityApi';
 import { Status } from '../createActivityForm/enums/Status';
 import { IUpdateActivity } from '../createActivityForm/interfaces/IUpdateActivity';
 // Helper function
-import { countAcitivities } from './helpers/countActivities';
+import { countActivities } from './helpers/countActivities';
 import { countTotals } from './helpers/countTotals';
 import { findMostFrequent } from './helpers/findMostFrequent';
 import { compareMostFrequent } from './helpers/compareMostFrequent';
@@ -148,7 +148,7 @@ export const ActivityArea: FC = (): ReactElement => {
           <ActivityCounter
             count={
               data
-                ? countAcitivities(data, Status.planned)
+                ? countActivities(data, Status.planned)
                 : undefined
             }
             status={Status.planned}
@@ -156,7 +156,7 @@ export const ActivityArea: FC = (): ReactElement => {
           <ActivityCounter
             count={
               data
-                ? countAcitivities(data, Status.started)
+                ? countActivities(data, Status.started)
                 : undefined
             }
             status={Status.started}
@@ -164,7 +164,7 @@ export const ActivityArea: FC = (): ReactElement => {
           <ActivityCounter
             count={
               data
-                ? countAcitivities(data, Status.completed)
+                ? countActivities(data, Status.completed)
                 : undefined
             }
             status={Status.completed}
