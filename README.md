@@ -18,7 +18,6 @@ TraiNext is a one page application that acts as a log of training activities. Fr
 - Node.js
 - Express
 - TypeORM
-- Mongo.db
 - MySQL
 
 ## 2. Images and Videos
