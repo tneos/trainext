@@ -242,17 +242,15 @@ export const ActivityArea: FC = (): ReactElement => {
           />
           <ActivitiesTotalTime
             total={
-              data &&
-              countTotals(data)[2].toString() !== '0'
+              data && countTotals(data)[2] < 10
+                ? countTotals(data)[1].toString() +
+                  ':' +
+                  '0' +
+                  countTotals(data)[2].toString()
+                : data && countTotals(data)[2] >= 10
                 ? countTotals(data)[1].toString() +
                   ':' +
                   countTotals(data)[2].toString()
-                : data &&
-                  countTotals(data)[2].toString() === '0'
-                ? countTotals(data)[1].toString() +
-                  ':' +
-                  countTotals(data)[2].toString() +
-                  '0'
                 : undefined
             }
           />

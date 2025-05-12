@@ -7,6 +7,7 @@ export const ActivitiesTotalTime: FC<
 > = (props): ReactElement => {
   // Destructure props
   const { total = 'hh.mm' } = props;
+
   return (
     <>
       <Box
