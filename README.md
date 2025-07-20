@@ -34,7 +34,7 @@ TraiNext is a one page application that acts as a log of training activities. Fr
 
 #### Client
 
-- [![React][React.js]] [https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white]
+- [https://img.shields.io/badge/React_Query-FF4154?style=for-the-badge&logo=ReactQuery&logoColor=white]
 - [![React][React.js]][React-url]
 - [![Vue][Vue.js]][Vue-url]
 - [![Angular][Angular.io]][Angular-url]
