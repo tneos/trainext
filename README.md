@@ -17,7 +17,7 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#images-and-videos">Usage</a></li>
+    <li><a href="#images-and-videos">Images and videos</a></li>
     
   </ol>
 </details>
@@ -41,7 +41,7 @@ TraiNext is a one page application that acts as a log of training activities. Fr
 - [![TypeORM](https://img.shields.io/badge/TypeORM-FE0803?logo=typeorm&logoColor=fff)](#)
 - [![MySQL](https://img.shields.io/badge/MySQL-4479A1?logo=mysql&logoColor=fff)](#)
 
-## 2. Images and Videos
+## Images and Videos
 
 #### Home page
 
